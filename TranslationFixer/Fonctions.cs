@@ -90,8 +90,9 @@ namespace TranslationFixer
             }
         }
 
-        public void Remplace3(XmlNodeList node)
+        public int Remplace3(XmlNodeList node)
         {
+            int chgts=0;
             for (int i = 0; i < mData.table.GetLength(0); i++)
             {
                 foreach (XmlElement element in node)
@@ -103,11 +104,13 @@ namespace TranslationFixer
                         if (currNode.InnerText == mData.table[i, 0])
                         {
                             currNode.InnerText = mData.table[i, 1];
+                            chgts++;
                         }
                         currNode = currNode.NextSibling;    // On passe au noeud d'après
                     }
                 }
             }
+            return chgts;
         }
     }
 }

@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.checkBoxBackup = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.labelChgts = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonLoadSaveGame
@@ -109,11 +110,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(86, 346);
+            this.label3.Location = new System.Drawing.Point(95, 375);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 34);
+            this.label3.Size = new System.Drawing.Size(102, 34);
             this.label3.TabIndex = 9;
-            this.label3.Text = "SDV-FR Team\r\nv0.3.1 pre-release";
+            this.label3.Text = "SDV-FR Team\r\nv0.4 pre-release";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // checkBoxBackup
@@ -137,12 +138,23 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "3) Cliquez sur \"Corriger\"";
             // 
+            // labelChgts
+            // 
+            this.labelChgts.AutoSize = true;
+            this.labelChgts.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelChgts.Location = new System.Drawing.Point(67, 340);
+            this.labelChgts.Name = "labelChgts";
+            this.labelChgts.Size = new System.Drawing.Size(0, 17);
+            this.labelChgts.TabIndex = 13;
+            this.labelChgts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(285, 389);
+            this.ClientSize = new System.Drawing.Size(285, 418);
+            this.Controls.Add(this.labelChgts);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.checkBoxBackup);
             this.Controls.Add(this.label3);
@@ -169,6 +181,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBoxBackup;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelChgts;
     }
 }
 

@@ -14,6 +14,8 @@ namespace TranslationFixer
             {"Cooking", "Cuisine"},
             {"Fish",    "Poisson"},
             {"Scythe",  "Faux"},
+            {"Weeds",  "Herbes"},
+            {"Stone",  "Pierre"},
         };
 
         public Data()

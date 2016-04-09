@@ -122,27 +122,29 @@ namespace TranslationFixer
                         File.Copy(pathfileGame, pathDirectoryGame + "\\" + "SaveGameInfoBACKUP");
                     }
 
-                    // Lieux où chercher (Name)
                     XmlNodeList[] nodeTab = new XmlNodeList[]
                     {
+                        // Lieux où chercher (Name)
                         docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/items/Item"),
                         docName.SelectNodes("/SaveGame/player/items/Item"),
-                        docName.SelectNodes("/SaveGame/player/items/Item/Name"),
+
+                        // Lieux où chercher (Game)
+                        docGame.SelectNodes("/Farmer/items/Item"),
                     };
 
-                    // Lieux où chercher (Game)
-
-
                     // Remplacements
+                    int chgts = 0;
                     for (int i = 0; i < nodeTab.GetLength(0); i++)
                     {
-                        mOperation.Remplace3(nodeTab[i]);
+                        chgts = chgts + mOperation.Remplace3(nodeTab[i]);
                     }
                     
                     // Sauvegarde
                     docName.Save(pathfileName);
+                    docGame.Save(pathfileGame);
                     buttonReplace.BackColor = Color.LimeGreen;
                     buttonReplace.Text = "Terminé";
+                    labelChgts.Text = Convert.ToString(chgts) + " changements effectués";
                     done = true;
                 }
                 catch
