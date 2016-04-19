@@ -16,6 +16,8 @@ namespace TranslationFixer
             {"Scythe",  "Faux"},
             {"Weeds",  "Herbes"},
             {"Stone",  "Pierre"},
+            {"Pickaxe",  "Pioche"},
+            {"Chest",  "Coffre"},
         };
 
         public Data()

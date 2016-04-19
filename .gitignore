@@ -24,3 +24,4 @@ TranslationFixer/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221d
 TranslationFixer/Properties/AssemblyInfo.cs
 TranslationFixer/Properties/Resources.Designer.cs
 TranslationFixer/Properties/Settings.Designer.cs
+*.suo
