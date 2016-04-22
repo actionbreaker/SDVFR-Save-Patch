@@ -110,11 +110,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(95, 375);
+            this.label3.Location = new System.Drawing.Point(87, 375);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 34);
+            this.label3.Size = new System.Drawing.Size(113, 34);
             this.label3.TabIndex = 9;
-            this.label3.Text = "SDV-FR Team\r\nv0.4 pre-release";
+            this.label3.Text = "SDV-FR Team\r\nv0.5.1 pre-release";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // checkBoxBackup

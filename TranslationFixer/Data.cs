@@ -18,6 +18,7 @@ namespace TranslationFixer
             {"Stone",  "Pierre"},
             {"Pickaxe",  "Pioche"},
             {"Chest",  "Coffre"},
+
             {"Deluxe Coop",  "Deluxe Poulailler"},
             {"Stable",  "Étable"},
             {"Well",  "Puits"},
