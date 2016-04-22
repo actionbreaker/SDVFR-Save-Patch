@@ -127,6 +127,8 @@ namespace TranslationFixer
                         // Lieux où chercher (Name)
                         docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/items/Item"),
                         docName.SelectNodes("/SaveGame/player/items/Item"),
+                        docName.SelectNodes("/SaveGame/locations/GameLocation/buildings/Building/indoors/name"),
+                        docName.SelectNodes("SaveGame/locations/GameLocation/buildings/Building/buildingType"),
 
                         // Lieux où chercher (Game)
                         docGame.SelectNodes("/Farmer/items/Item"),
