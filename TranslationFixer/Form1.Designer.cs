@@ -120,6 +120,8 @@
             // checkBoxBackup
             // 
             this.checkBoxBackup.AutoSize = true;
+            this.checkBoxBackup.Checked = true;
+            this.checkBoxBackup.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxBackup.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxBackup.Location = new System.Drawing.Point(12, 196);
             this.checkBoxBackup.Name = "checkBoxBackup";
