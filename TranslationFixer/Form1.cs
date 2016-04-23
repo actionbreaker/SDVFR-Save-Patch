@@ -39,7 +39,7 @@ namespace TranslationFixer
         {
             // Sélection du fichier
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+"\\StardewValley\\Saves";
             DialogResult result = openFileDialog1.ShowDialog();
 
             if (result == DialogResult.OK)
@@ -48,6 +48,8 @@ namespace TranslationFixer
                 pathDirectoryGame = Path.GetDirectoryName(pathfileGame);    // Chemin
                 game = Path.GetFileNameWithoutExtension(pathfileGame);      // Nom fichier
             }
+
+            // Rajouter un if (result == DialogResult.Cancel) ? 
 
             try
             {
@@ -76,7 +78,7 @@ namespace TranslationFixer
         {
             // Sélection du fichier
             OpenFileDialog openFileDialog2 = new OpenFileDialog();
-            openFileDialog2.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            openFileDialog2.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\StardewValley\\Saves";
             DialogResult result = openFileDialog2.ShowDialog();
 
             if (result == DialogResult.OK)
@@ -128,10 +130,16 @@ namespace TranslationFixer
                         docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/items/Item"),
                         docName.SelectNodes("/SaveGame/player/items/Item"),
                         docName.SelectNodes("/SaveGame/locations/GameLocation/buildings/Building/indoors/name"),
-                        docName.SelectNodes("SaveGame/locations/GameLocation/buildings/Building/buildingType"),
+                        docName.SelectNodes("/SaveGame/locations/GameLocation/buildings/Building/buildingType"),
+
+                        docName.SelectNodes("/SaveGame/player/craftingRecipes/item/key/string"),
+                        docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/Name"),
+                        docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/name"),
 
                         // Lieux où chercher (Game)
                         docGame.SelectNodes("/Farmer/items/Item"),
+
+                        docGame.SelectNodes("/Farmer/craftingRecipes/item/key/string"),
                     };
 
                     // Remplacements
