@@ -38,6 +38,7 @@
             this.checkBoxBackup = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.labelChgts = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // buttonLoadSaveGame
@@ -150,12 +151,24 @@
             this.labelChgts.TabIndex = 13;
             this.labelChgts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(67, 418);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(155, 17);
+            this.linkLabel1.TabIndex = 14;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Vérifier les mises à jour";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(285, 418);
+            this.ClientSize = new System.Drawing.Size(285, 444);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.labelChgts);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.checkBoxBackup);
@@ -184,6 +197,7 @@
         private System.Windows.Forms.CheckBox checkBoxBackup;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelChgts;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
