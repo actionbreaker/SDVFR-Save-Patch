@@ -114,7 +114,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 34);
             this.label3.TabIndex = 9;
-            this.label3.Text = "SDV-FR Team\r\nv0.5.1 pre-release";
+            this.label3.Text = "SDV-FR Team\r\nv0.5.2 pre-release";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // checkBoxBackup
