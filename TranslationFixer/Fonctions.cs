@@ -104,7 +104,7 @@ namespace TranslationFixer
                         if (currNode.InnerText == mData.table[i, 0])
                         {
                             currNode.InnerText = mData.table[i, 1];
-                            chgts++;
+                            //chgts++;
                         }
                         currNode = currNode.NextSibling;    // On passe au noeud d'après
                     }

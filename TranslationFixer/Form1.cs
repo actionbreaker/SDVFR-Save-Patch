@@ -154,7 +154,7 @@ namespace TranslationFixer
                     docGame.Save(pathfileGame);
                     buttonReplace.BackColor = Color.LimeGreen;
                     buttonReplace.Text = "Terminé";
-                    labelChgts.Text = Convert.ToString(chgts) + " changements effectués";
+                    //labelChgts.Text = Convert.ToString(chgts) + " changements effectués";
                     done = true;
                 }
                 catch
