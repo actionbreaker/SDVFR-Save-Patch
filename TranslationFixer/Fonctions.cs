@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,101 +17,66 @@ namespace TranslationFixer
             mData = new Data();
         }
 
-        public void Replace(XmlNodeList node)
+        public void Remplace3(XmlNodeList node)     // Traduction en anglais
         {
-            foreach (XmlElement element in node)
-            {
-                XmlNode currNode = element.FirstChild;          // Initialisation au premier noeud trouvé
-
-                while (currNode != null){              // on parcourt les noeuds
-                    if (currNode.Name == "type") {
-                        if (currNode.InnerText == "Cooking") {
-                            currNode.InnerText = "Cuisine";
-                        }
-                        else if (currNode.InnerText == "Fish") {
-                            currNode.InnerText = "Poisson";
-                        }
-                    }
-                    currNode = currNode.NextSibling;    // On passe au noeud d'après
-                }
-            }
-        }
-
-        public void ReplaceScythe(XmlNodeList node)
-        {
-            foreach (XmlElement element in node)
-            {
-                XmlNode currNode = element.FirstChild;          // Initialisation au premier noeud trouvé
-
-                while (currNode != null)
-                {              // on parcourt les noeuds
-                    if ((currNode.Name == "Name")||(currNode.Name == "name"))
-                    {
-                        if (currNode.InnerText == "Scythe")
-                        {
-                            currNode.InnerText = "Faux";
-                        }
-                    }
-                    currNode = currNode.NextSibling;    // On passe au noeud d'après
-                }
-            }
-        }
-
-        public void Remplace(XmlNodeList node, string stringLoc, string stringSrc, string stringDst)
-        {
-            foreach (XmlElement element in node)
-            {
-                XmlNode currNode = element.FirstChild;          // Initialisation au premier noeud trouvé
-
-                while (currNode != null){              // on parcourt les noeuds
-                    if (currNode.Name == stringLoc){
-                        if (currNode.InnerText == stringSrc){
-                            currNode.InnerText = stringDst;
-                        }
-                    }
-                    currNode = currNode.NextSibling;    // On passe au noeud d'après
-                }
-            }
-        }
-
-        public void Remplace2(XmlNodeList node, string stringSrc, string stringDst)
-        {
-            foreach (XmlElement element in node)
-            {
-                XmlNode currNode = element.FirstChild;          // Initialisation au premier noeud trouvé
-
-                while (currNode != null)
-                {              // on parcourt les noeuds
-                    if (currNode.InnerText == stringSrc)
-                    {
-                        currNode.InnerText = stringDst;
-                    }
-                    currNode = currNode.NextSibling;    // On passe au noeud d'après
-                }
-            }
-        }
-
-        public int Remplace3(XmlNodeList node)
-        {
-            int chgts=0;
             for (int i = 0; i < mData.table.GetLength(0); i++)
             {
                 foreach (XmlElement element in node)
                 {
                     XmlNode currNode = element.FirstChild;          // Initialisation au premier noeud trouvé
-
                     while (currNode != null)
-                    {              // on parcourt les noeuds
+                    {                       // on parcourt les noeuds
                         if (currNode.InnerText == mData.table[i, 0])
                         {
                             currNode.InnerText = mData.table[i, 1];
-                            //chgts++;
                         }
-                        currNode = currNode.NextSibling;    // On passe au noeud d'après
+                        currNode = currNode.NextSibling;            // On passe au noeud d'après
                     }
                 }
             }
-            return chgts;
+        }
+
+        public void RemplaceEN(XmlNodeList node)    // Traduction en anglais
+        {
+
+            foreach (XmlElement element in node)
+            {
+                XmlNode currNode = element.FirstChild;          // Initialisation au premier noeud trouvé
+
+                while (currNode != null)
+                {
+                    do
+                    {
+                        currNode = currNode.FirstChild;
+                    } while (currNode.HasChildNodes);
+
+                    while (currNode != null)
+                    {                       // on parcourt les noeuds
+                        currNode.InnerText = RemoveDiacritics(currNode.InnerText);
+                        currNode.InnerText = "CACA";
+                        currNode = currNode.NextSibling;            // On passe au noeud d'après
+                    }
+                    currNode = currNode.NextSibling;            // On passe au noeud d'après
+                }
+            }
+
+        }
+
+        static string RemoveDiacritics(string stIn)
+        {
+            string stFormD = stIn.Normalize(NormalizationForm.FormD);
+            StringBuilder sb = new StringBuilder();
+
+            for (int ich = 0; ich < stFormD.Length; ich++)
+            {
+                UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(stFormD[ich]);
+                if (uc != UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(stFormD[ich]);
+                }
+            }
+
+            return (sb.ToString().Normalize(NormalizationForm.FormC));
         }
     }
 }

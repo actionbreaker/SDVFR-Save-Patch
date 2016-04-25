@@ -35,7 +35,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.checkBoxBackup = new System.Windows.Forms.CheckBox();
             this.labelChgts = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.buttonMAJ = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonLoadSaveGame
@@ -60,11 +61,11 @@
             this.buttonReplace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReplace.Font = new System.Drawing.Font("Calibri Light", 15F);
             this.buttonReplace.ForeColor = System.Drawing.Color.White;
-            this.buttonReplace.Location = new System.Drawing.Point(0, 198);
+            this.buttonReplace.Location = new System.Drawing.Point(0, 231);
             this.buttonReplace.Name = "buttonReplace";
             this.buttonReplace.Size = new System.Drawing.Size(287, 54);
             this.buttonReplace.TabIndex = 2;
-            this.buttonReplace.Text = "Corriger";
+            this.buttonReplace.Text = "Français";
             this.buttonReplace.UseVisualStyleBackColor = false;
             this.buttonReplace.Click += new System.EventHandler(this.buttonReplace_Click);
             // 
@@ -88,11 +89,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(104, 268);
+            this.label3.Location = new System.Drawing.Point(105, 313);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 34);
             this.label3.TabIndex = 9;
-            this.label3.Text = "SDV-FR Team\r\nv0.6.1";
+            this.label3.Text = "SDV-FR Team\r\nv0.7";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // checkBoxBackup
@@ -112,30 +113,45 @@
             // 
             this.labelChgts.AutoSize = true;
             this.labelChgts.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelChgts.Location = new System.Drawing.Point(33, 268);
+            this.labelChgts.Location = new System.Drawing.Point(33, 302);
             this.labelChgts.Name = "labelChgts";
             this.labelChgts.Size = new System.Drawing.Size(0, 17);
             this.labelChgts.TabIndex = 13;
             this.labelChgts.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // linkLabel1
+            // buttonMAJ
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(67, 313);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(155, 17);
-            this.linkLabel1.TabIndex = 14;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Vérifier les mises à jour";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.buttonMAJ.BackColor = System.Drawing.Color.Gray;
+            this.buttonMAJ.FlatAppearance.BorderSize = 0;
+            this.buttonMAJ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMAJ.Font = new System.Drawing.Font("Calibri", 11F);
+            this.buttonMAJ.ForeColor = System.Drawing.Color.White;
+            this.buttonMAJ.Location = new System.Drawing.Point(36, 359);
+            this.buttonMAJ.Name = "buttonMAJ";
+            this.buttonMAJ.Size = new System.Drawing.Size(219, 39);
+            this.buttonMAJ.TabIndex = 16;
+            this.buttonMAJ.Text = "Vérifier les mises à jour";
+            this.buttonMAJ.UseVisualStyleBackColor = false;
+            this.buttonMAJ.Click += new System.EventHandler(this.buttonMAJ_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri Light", 15F);
+            this.label1.Location = new System.Drawing.Point(76, 197);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(148, 31);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Traduire en : ";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(285, 341);
-            this.Controls.Add(this.linkLabel1);
+            this.ClientSize = new System.Drawing.Size(285, 409);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonMAJ);
             this.Controls.Add(this.labelChgts);
             this.Controls.Add(this.checkBoxBackup);
             this.Controls.Add(this.label3);
@@ -158,7 +174,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox checkBoxBackup;
         private System.Windows.Forms.Label labelChgts;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Button buttonMAJ;
+        private System.Windows.Forms.Label label1;
     }
 }
 

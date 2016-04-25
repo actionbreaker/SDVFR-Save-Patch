@@ -39,7 +39,7 @@ namespace TranslationFixer
         {
             // Sélection du fichier
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)+"\\StardewValley\\Saves";
+            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\StardewValley\\Saves";
             DialogResult result = openFileDialog1.ShowDialog();
 
             if (result == DialogResult.OK)
@@ -47,30 +47,28 @@ namespace TranslationFixer
                 pathfileGame = openFileDialog1.FileName;                    // Chemin + Nom fichier
                 pathDirectoryGame = Path.GetDirectoryName(pathfileGame);    // Chemin
                 game = Path.GetFileNameWithoutExtension(pathfileGame);      // Nom fichier
-            }
 
-            // Rajouter un if (result == DialogResult.Cancel) ? 
-
-            try
-            {
-                // Chargement du fichier
-                if (game=="SaveGameInfo")
+                try
                 {
-                    docGame = new XmlDocument();
-                    docGame.Load(pathfileGame);
-                    buttonLoadSaveGame.BackColor = Color.LimeGreen;
-                    buttonLoadSaveGame.Text = game;
+                    // Chargement du fichier
+                    if (game == "SaveGameInfo")
+                    {
+                        docGame = new XmlDocument();
+                        docGame.Load(pathfileGame);
+                        buttonLoadSaveGame.BackColor = Color.LimeGreen;
+                        buttonLoadSaveGame.Text = game;
+                    }
+                    else
+                    {
+                        buttonLoadSaveGame.BackColor = Color.Firebrick;
+                        buttonLoadSaveGame.Text = "Mauvais fichier";
+                    }
                 }
-                else
+                catch
                 {
                     buttonLoadSaveGame.BackColor = Color.Firebrick;
-                    buttonLoadSaveGame.Text = "Mauvais fichier";
+                    buttonLoadSaveGame.Text = "Erreur";
                 }
-            }
-            catch
-            {
-                buttonLoadSaveGame.BackColor = Color.Firebrick;
-                buttonLoadSaveGame.Text = "Erreur";
             }
         }
 
@@ -86,85 +84,82 @@ namespace TranslationFixer
                 pathfileName = openFileDialog2.FileName;                    // Chemin + Nom fichier
                 pathDirectoryName = Path.GetDirectoryName(pathfileName);    // Chemin
                 name = Path.GetFileNameWithoutExtension(pathfileName);      // Nom fichier
-            }
 
-            try
-            {
-                // Chargement du fichier
-                if (name == "SaveGameInfo")
+                try
+                {
+                    // Chargement du fichier
+                    if (name == "SaveGameInfo")
+                    {
+                        buttonLoadSaveName.BackColor = Color.Firebrick;
+                        buttonLoadSaveName.Text = "Mauvais fichier";
+                    }
+                    else
+                    {
+                        docName = new XmlDocument();
+                        docName.Load(pathfileName);
+                        buttonLoadSaveName.BackColor = Color.LimeGreen;
+                        buttonLoadSaveName.Text = name;
+                    }
+                }
+                catch
                 {
                     buttonLoadSaveName.BackColor = Color.Firebrick;
-                    buttonLoadSaveName.Text = "Mauvais fichier";
+                    buttonLoadSaveName.Text = "Erreur";
                 }
-                else
-                {
-                    docName = new XmlDocument();
-                    docName.Load(pathfileName);
-                    buttonLoadSaveName.BackColor = Color.LimeGreen;
-                    buttonLoadSaveName.Text = name;
-                }
-            }
-            catch
-            {
-                buttonLoadSaveName.BackColor = Color.Firebrick;
-                buttonLoadSaveName.Text = "Erreur";
             }
         }
 
         private void buttonReplace_Click(object sender, EventArgs e)
         {
-            if (done==false)
+            if (done == false)
             {
                 try
                 {
                     // Backup
                     if (checkBoxBackup.Checked == true)
                     {
+                        File.Delete(pathDirectoryName + "\\" + name + "BACKUP");
+                        File.Delete(pathDirectoryGame + "\\" + "SaveGameInfoBACKUP");
                         File.Copy(pathfileName, pathDirectoryName + "\\" + name + "BACKUP");
                         File.Copy(pathfileGame, pathDirectoryGame + "\\" + "SaveGameInfoBACKUP");
                     }
 
-                    XmlNodeList[] nodeTab = new XmlNodeList[]
-                    {
+                    XmlNodeList[] nodeTab = new XmlNodeList[]{
                         // Lieux où chercher (Name)
                         docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/items/Item"),
                         docName.SelectNodes("/SaveGame/player/items/Item"),
                         docName.SelectNodes("/SaveGame/locations/GameLocation/buildings/Building/indoors/name"),
                         docName.SelectNodes("/SaveGame/locations/GameLocation/buildings/Building/buildingType"),
-
                         docName.SelectNodes("/SaveGame/player/craftingRecipes/item/key/string"),
                         docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/Name"),
                         docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/name"),
 
                         // Lieux où chercher (Game)
                         docGame.SelectNodes("/Farmer/items/Item"),
-
                         docGame.SelectNodes("/Farmer/craftingRecipes/item/key/string"),
                     };
 
                     // Remplacements
-                    int chgts = 0;
                     for (int i = 0; i < nodeTab.GetLength(0); i++)
                     {
-                        chgts = chgts + mOperation.Remplace3(nodeTab[i]);
+                        mOperation.Remplace3(nodeTab[i]);
                     }
-                    
+
                     // Sauvegarde
                     docName.Save(pathfileName);
                     docGame.Save(pathfileGame);
                     buttonReplace.BackColor = Color.LimeGreen;
                     buttonReplace.Text = "Terminé";
-                    //labelChgts.Text = Convert.ToString(chgts) + " changements effectués";
                     done = true;
                 }
                 catch
                 {
                     buttonReplace.Text = "Erreur";
-                } 
+                }
             }
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void buttonMAJ_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/actionbreaker/SDVFR-Save-Patch/releases");
         }
