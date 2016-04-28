@@ -56,7 +56,7 @@
             // 
             // buttonReplace
             // 
-            this.buttonReplace.BackColor = System.Drawing.Color.Firebrick;
+            this.buttonReplace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.buttonReplace.FlatAppearance.BorderSize = 0;
             this.buttonReplace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReplace.Font = new System.Drawing.Font("Calibri Light", 15F);
@@ -93,12 +93,13 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 34);
             this.label3.TabIndex = 9;
-            this.label3.Text = "SDV-FR Team\r\nv0.7";
+            this.label3.Text = "SDV-FR Team\r\nv0.7.1";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // checkBoxBackup
             // 
             this.checkBoxBackup.AutoSize = true;
+            this.checkBoxBackup.BackColor = System.Drawing.Color.White;
             this.checkBoxBackup.Checked = true;
             this.checkBoxBackup.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxBackup.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -107,7 +108,8 @@
             this.checkBoxBackup.Size = new System.Drawing.Size(269, 38);
             this.checkBoxBackup.TabIndex = 11;
             this.checkBoxBackup.Text = "Faire une backup avant le remplacement\r\ndans le dossier de la save (recommandé)";
-            this.checkBoxBackup.UseVisualStyleBackColor = true;
+            this.checkBoxBackup.UseVisualStyleBackColor = false;
+            this.checkBoxBackup.CheckedChanged += new System.EventHandler(this.checkBoxBackup_CheckedChanged);
             // 
             // labelChgts
             // 

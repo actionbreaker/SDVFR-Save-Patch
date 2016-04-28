@@ -133,6 +133,8 @@ namespace TranslationFixer
                         docName.SelectNodes("/SaveGame/player/craftingRecipes/item/key/string"),
                         docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/Name"),
                         docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/name"),
+                        docName.SelectNodes("/SaveGame/locations/GameLocation/buildings/Building/indoors/objects/item/value/Object/Name"),
+                        docName.SelectNodes("/SaveGame/locations/GameLocation/buildings/Building/indoors/objects/item/value/Object/name"),
 
                         // Lieux où chercher (Game)
                         docGame.SelectNodes("/Farmer/items/Item"),
@@ -161,7 +163,19 @@ namespace TranslationFixer
 
         private void buttonMAJ_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/actionbreaker/SDVFR-Save-Patch/releases");
+            System.Diagnostics.Process.Start("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/latest");
+        }
+
+        private void checkBoxBackup_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!checkBoxBackup.Checked)
+            {
+                checkBoxBackup.ForeColor = Color.Red;
+            }
+            else
+            {
+                checkBoxBackup.ForeColor = Color.Black;
+            }
         }
     }
 }

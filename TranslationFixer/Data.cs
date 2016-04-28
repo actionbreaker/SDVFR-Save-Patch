@@ -16,9 +16,11 @@ namespace TranslationFixer
             {"Scythe",  "Faux"},
             {"Weeds",  "Herbes"},
             {"Stone",  "Pierre"},
+            {"Hay",  "Foin"},
 
             // Outils
             {"Pickaxe",  "Pioche"},
+            {"Axe", "Hache"},
 
             // Crafts
             {"Chest",  "Coffre"},
