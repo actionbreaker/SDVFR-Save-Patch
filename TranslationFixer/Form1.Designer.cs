@@ -46,7 +46,7 @@
             this.buttonLoadSaveGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLoadSaveGame.Font = new System.Drawing.Font("Calibri Light", 15F);
             this.buttonLoadSaveGame.ForeColor = System.Drawing.Color.White;
-            this.buttonLoadSaveGame.Location = new System.Drawing.Point(0, 72);
+            this.buttonLoadSaveGame.Location = new System.Drawing.Point(0, 55);
             this.buttonLoadSaveGame.Name = "buttonLoadSaveGame";
             this.buttonLoadSaveGame.Size = new System.Drawing.Size(287, 54);
             this.buttonLoadSaveGame.TabIndex = 0;
@@ -61,7 +61,7 @@
             this.buttonReplace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReplace.Font = new System.Drawing.Font("Calibri Light", 15F);
             this.buttonReplace.ForeColor = System.Drawing.Color.White;
-            this.buttonReplace.Location = new System.Drawing.Point(0, 231);
+            this.buttonReplace.Location = new System.Drawing.Point(0, 211);
             this.buttonReplace.Name = "buttonReplace";
             this.buttonReplace.Size = new System.Drawing.Size(287, 54);
             this.buttonReplace.TabIndex = 2;
@@ -76,7 +76,7 @@
             this.buttonLoadSaveName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLoadSaveName.Font = new System.Drawing.Font("Calibri Light", 15F);
             this.buttonLoadSaveName.ForeColor = System.Drawing.Color.White;
-            this.buttonLoadSaveName.Location = new System.Drawing.Point(0, 12);
+            this.buttonLoadSaveName.Location = new System.Drawing.Point(0, 0);
             this.buttonLoadSaveName.Name = "buttonLoadSaveName";
             this.buttonLoadSaveName.Size = new System.Drawing.Size(287, 54);
             this.buttonLoadSaveName.TabIndex = 5;
@@ -89,7 +89,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(105, 313);
+            this.label3.Location = new System.Drawing.Point(105, 289);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 34);
             this.label3.TabIndex = 9;
@@ -103,7 +103,7 @@
             this.checkBoxBackup.Checked = true;
             this.checkBoxBackup.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxBackup.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxBackup.Location = new System.Drawing.Point(12, 144);
+            this.checkBoxBackup.Location = new System.Drawing.Point(12, 125);
             this.checkBoxBackup.Name = "checkBoxBackup";
             this.checkBoxBackup.Size = new System.Drawing.Size(269, 38);
             this.checkBoxBackup.TabIndex = 11;
@@ -128,7 +128,7 @@
             this.buttonMAJ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMAJ.Font = new System.Drawing.Font("Calibri", 11F);
             this.buttonMAJ.ForeColor = System.Drawing.Color.White;
-            this.buttonMAJ.Location = new System.Drawing.Point(36, 359);
+            this.buttonMAJ.Location = new System.Drawing.Point(36, 335);
             this.buttonMAJ.Name = "buttonMAJ";
             this.buttonMAJ.Size = new System.Drawing.Size(219, 39);
             this.buttonMAJ.TabIndex = 16;
@@ -140,7 +140,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri Light", 15F);
-            this.label1.Location = new System.Drawing.Point(76, 197);
+            this.label1.Location = new System.Drawing.Point(75, 177);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(148, 31);
             this.label1.TabIndex = 17;
@@ -151,7 +151,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(285, 409);
+            this.ClientSize = new System.Drawing.Size(285, 385);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonMAJ);
             this.Controls.Add(this.labelChgts);
