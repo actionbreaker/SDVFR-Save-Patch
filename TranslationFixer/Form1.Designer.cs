@@ -37,6 +37,7 @@
             this.labelChgts = new System.Windows.Forms.Label();
             this.buttonMAJ = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // buttonLoadSaveGame
@@ -89,11 +90,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(105, 289);
+            this.label3.Location = new System.Drawing.Point(39, 285);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 34);
+            this.label3.Size = new System.Drawing.Size(216, 17);
             this.label3.TabIndex = 9;
-            this.label3.Text = "SDVFR Team\r\nv0.7.2";
+            this.label3.Text = "Créé avec amour par la team SDVFR";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // checkBoxBackup
@@ -128,7 +129,7 @@
             this.buttonMAJ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMAJ.Font = new System.Drawing.Font("Calibri", 11F);
             this.buttonMAJ.ForeColor = System.Drawing.Color.White;
-            this.buttonMAJ.Location = new System.Drawing.Point(36, 335);
+            this.buttonMAJ.Location = new System.Drawing.Point(36, 318);
             this.buttonMAJ.Name = "buttonMAJ";
             this.buttonMAJ.Size = new System.Drawing.Size(219, 39);
             this.buttonMAJ.TabIndex = 16;
@@ -146,12 +147,27 @@
             this.label1.TabIndex = 17;
             this.label1.Text = "Traduire en : ";
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold);
+            this.linkLabel1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.linkLabel1.LinkColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.linkLabel1.Location = new System.Drawing.Point(106, 365);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(70, 17);
+            this.linkLabel1.TabIndex = 18;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Changelog";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(285, 385);
+            this.ClientSize = new System.Drawing.Size(285, 391);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonMAJ);
             this.Controls.Add(this.labelChgts);
@@ -162,7 +178,8 @@
             this.Controls.Add(this.buttonLoadSaveGame);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "SDVFR";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "SDVFR v0.8";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,6 +195,7 @@
         private System.Windows.Forms.Label labelChgts;
         private System.Windows.Forms.Button buttonMAJ;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
