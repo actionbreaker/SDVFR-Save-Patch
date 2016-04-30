@@ -29,6 +29,7 @@ namespace TranslationFixer
         string pathDirectoryName;
         string game;
         string name;
+        string currentVersion = "v0.8.1";
 
         bool done;
         bool hasUpdate = false;
@@ -37,6 +38,7 @@ namespace TranslationFixer
         public Form1()
         {
             InitializeComponent();
+            label2.Text = currentVersion;
             done = false;
             mOperation = new Fonctions();
         }
@@ -185,7 +187,7 @@ namespace TranslationFixer
                 string[] pathsegments = myUri.Segments;
                 last = pathsegments.Last();
                 // MAJ disponible
-                if (last != "v0.8")
+                if (last != currentVersion)
                 {
                     hasUpdate = true;
                     buttonMAJ.BackColor = Color.DarkOrange;
