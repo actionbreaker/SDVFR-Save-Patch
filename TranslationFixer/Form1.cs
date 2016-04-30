@@ -185,7 +185,7 @@ namespace TranslationFixer
                 string[] pathsegments = myUri.Segments;
                 last = pathsegments.Last();
                 // MAJ disponible
-                if (last != "v0.7.1")
+                if (last != "v0.8")
                 {
                     hasUpdate = true;
                     buttonMAJ.BackColor = Color.DarkOrange;
