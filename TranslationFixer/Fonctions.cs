@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -62,7 +63,7 @@ namespace TranslationFixer
 
         }
 
-        static string RemoveDiacritics(string stIn)
+        static string RemoveDiacritics(string stIn)     // Accents
         {
             string stFormD = stIn.Normalize(NormalizationForm.FormD);
             StringBuilder sb = new StringBuilder();

@@ -26,7 +26,7 @@ namespace TranslationFixer
         private string pathfileName;
         string pathDirectoryName;
         string name;
-        string currentVersion = "v0.9";
+        string currentVersion = "v0.10";
 
         bool done;
         bool hasUpdate = false;
@@ -35,9 +35,19 @@ namespace TranslationFixer
         public Form1()
         {
             InitializeComponent();
-            label2.Text = currentVersion;
+            
             done = false;
             mOperation = new Fonctions();
+
+            // Corriger
+            buttonReplace.Enabled = false;
+            buttonReplace.BackColor = Color.White;
+            buttonReplace.Text = "Bienvenue";
+
+            // Recherche de MAJ
+            buttonMAJ.Text = "Recherche...";
+            CheckUpdate();
+            
         }
 
         private void buttonLoadSaveName_Click(object sender, EventArgs e)   // Charger Nom_56557
@@ -75,6 +85,13 @@ namespace TranslationFixer
 
                         buttonLoadSaveName.BackColor = Color.LimeGreen;
                         buttonLoadSaveName.Text = name.Trim(new Char[] { '_', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'});
+
+                        // Bouton "Corriger"
+                        buttonReplace.Enabled = true;
+                        buttonReplace.Font = new Font("Calibri Light", 15F);
+                        buttonReplace.BackColor = Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+                        buttonReplace.Text = "Corriger";
+
                     }
                 }
                 catch
@@ -137,40 +154,19 @@ namespace TranslationFixer
             }
         }
 
-        private async void buttonMAJ_Click(object sender, EventArgs e)
+        private void buttonMAJ_Click(object sender, EventArgs e)
         {
-            // Premier passage OU si pas d'update
-            if (!hasUpdate)
-            {
-                buttonMAJ.Text = "Recherche...";
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = await client.GetAsync("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/latest");
-                response.EnsureSuccessStatusCode();
-                string responseUri = response.RequestMessage.RequestUri.ToString();
-                Uri myUri = new Uri(responseUri);
-                string[] pathsegments = myUri.Segments;
-                last = pathsegments.Last();
-                // MAJ disponible
-                if (last != currentVersion)
-                {
-                    hasUpdate = true;
-                    buttonMAJ.BackColor = Color.DarkOrange;
-                    buttonMAJ.Text = "Télécharger la "+ last;
-                }
-                // Pas de MAJ
-                else
-                {
-                    hasUpdate = false;
-                    buttonMAJ.Text = "Aucune mise à jour";
-                }
-            }
             // Télécharge et exécute la dernière version
-            else
+            if(hasUpdate)
             {
                 WebClient Client = new WebClient();
                 Client.DownloadFile("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/download/"+last+"/SDVFRSavePatch_"+last+".exe", "SDVFRSavePatch_"+last+".exe");
                 Process.Start("SDVFRSavePatch_" + last + ".exe");
                 Dispose();
+            }
+            else
+            {
+                Process.Start("https://github.com/actionbreaker/SDVFR-Save-Patch/releases");
             }
         }
 
@@ -189,9 +185,30 @@ namespace TranslationFixer
             }
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private async void CheckUpdate()
         {
-            Process.Start("https://github.com/actionbreaker/SDVFR-Save-Patch/releases");
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/latest");
+            response.EnsureSuccessStatusCode();
+            string responseUri = response.RequestMessage.RequestUri.ToString();
+            Uri myUri = new Uri(responseUri);
+            string[] pathsegments = myUri.Segments;
+            last = pathsegments.Last();
+
+            // MAJ disponible
+            if (last != currentVersion)
+            {
+                hasUpdate = true;
+                buttonMAJ.Enabled = true;
+                buttonMAJ.BackColor = Color.DarkOrange;
+                buttonMAJ.Text = "Télécharger la " + last;
+            }
+            // Pas de MAJ
+            else
+            {
+                hasUpdate = false;
+                buttonMAJ.Text = last + " (à jour)";
+            }
         }
     }
 }
