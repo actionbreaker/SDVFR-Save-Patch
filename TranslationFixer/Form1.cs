@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +21,7 @@ namespace TranslationFixer
         XmlDocument docName;
 
         Fonctions mOperation;
+        Form2 mForm2;
 
         private string pathfileGame;
         private string pathfileName;
@@ -27,6 +31,8 @@ namespace TranslationFixer
         string name;
 
         bool done;
+        bool hasUpdate = false;
+        string last;
 
         public Form1()
         {
@@ -51,6 +57,7 @@ namespace TranslationFixer
                 try
                 {
                     // Chargement du fichier
+                    // Bon fichier
                     if (game == "SaveGameInfo")
                     {
                         docGame = new XmlDocument();
@@ -58,6 +65,7 @@ namespace TranslationFixer
                         buttonLoadSaveGame.BackColor = Color.LimeGreen;
                         buttonLoadSaveGame.Text = game;
                     }
+                    //Erreur
                     else
                     {
                         buttonLoadSaveGame.BackColor = Color.Firebrick;
@@ -88,11 +96,13 @@ namespace TranslationFixer
                 try
                 {
                     // Chargement du fichier
+                    // Erreur
                     if (name == "SaveGameInfo")
                     {
                         buttonLoadSaveName.BackColor = Color.Firebrick;
                         buttonLoadSaveName.Text = "Mauvais fichier";
                     }
+                    // Bon fichier
                     else
                     {
                         docName = new XmlDocument();
@@ -161,9 +171,41 @@ namespace TranslationFixer
             }
         }
 
-        private void buttonMAJ_Click(object sender, EventArgs e)
+        private async void buttonMAJ_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/latest");
+            // Premier passage OU si pas d'update
+            if (!hasUpdate)
+            {
+                buttonMAJ.Text = "Recherche...";
+                HttpClient client = new HttpClient();
+                HttpResponseMessage response = await client.GetAsync("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/latest");
+                response.EnsureSuccessStatusCode();
+                string responseUri = response.RequestMessage.RequestUri.ToString();
+                Uri myUri = new Uri(responseUri);
+                string[] pathsegments = myUri.Segments;
+                last = pathsegments.Last();
+                // MAJ disponible
+                if (last != "v0.7.1")
+                {
+                    hasUpdate = true;
+                    buttonMAJ.BackColor = Color.DarkOrange;
+                    buttonMAJ.Text = "Télécharger la "+ last;
+                }
+                // Pas de MAJ
+                else
+                {
+                    hasUpdate = false;
+                    buttonMAJ.Text = "Aucune mise à jour";
+                }
+            }
+            // Télécharge et exécute la dernière version
+            else
+            {
+                //System.Diagnostics.Process.Start("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/latest");
+                WebClient Client = new WebClient();
+                Client.DownloadFile("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/download/"+last+"/SDVFRSavePatch_"+last+".exe", "SDVFRSavePatch_"+last+".exe");
+                Process.Start("SDVFRSavePatch_" + last + ".exe");
+            }
         }
 
         private void checkBoxBackup_CheckedChanged(object sender, EventArgs e)
@@ -171,11 +213,19 @@ namespace TranslationFixer
             if (!checkBoxBackup.Checked)
             {
                 checkBoxBackup.ForeColor = Color.Red;
+                mForm2 = new Form2();
+                mForm2.Show();
             }
             else
             {
                 checkBoxBackup.ForeColor = Color.Black;
+                mForm2.Close();
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/actionbreaker/SDVFR-Save-Patch/releases");
         }
     }
 }
