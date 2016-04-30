@@ -69,7 +69,7 @@
             this.Controls.Add(this.button_OK);
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form2";
+            this.Text = "Avertissement";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -38,6 +38,7 @@
             this.buttonMAJ = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonLoadSaveGame
@@ -153,20 +154,34 @@
             this.linkLabel1.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold);
             this.linkLabel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.linkLabel1.LinkColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.linkLabel1.Location = new System.Drawing.Point(106, 365);
+            this.linkLabel1.Location = new System.Drawing.Point(108, 379);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(70, 17);
             this.linkLabel1.TabIndex = 18;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Changelog";
+            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label2.Location = new System.Drawing.Point(121, 360);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 17);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "v0.8.1";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(285, 391);
+            this.ClientSize = new System.Drawing.Size(285, 405);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonMAJ);
@@ -179,7 +194,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SDVFR v0.8";
+            this.Text = "SDVFR";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,6 +211,7 @@
         private System.Windows.Forms.Button buttonMAJ;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
