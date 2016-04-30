@@ -13,6 +13,7 @@ namespace TranslationFixer
             // TRADUCTIONS
             {"Cooking", "Cuisine"},
             {"Scythe",  "Faux"},
+            {"Feed Hopper",  "Trémie"},
 
             // Items
             {"Weeds",  "Herbes"},
