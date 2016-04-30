@@ -29,7 +29,7 @@ namespace TranslationFixer
         string pathDirectoryName;
         string game;
         string name;
-        string currentVersion = "v0.8.1";
+        string currentVersion = "v0.8.2";
 
         bool done;
         bool hasUpdate = false;
@@ -206,6 +206,7 @@ namespace TranslationFixer
                 WebClient Client = new WebClient();
                 Client.DownloadFile("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/download/"+last+"/SDVFRSavePatch_"+last+".exe", "SDVFRSavePatch_"+last+".exe");
                 Process.Start("SDVFRSavePatch_" + last + ".exe");
+                Dispose();
             }
         }
 
