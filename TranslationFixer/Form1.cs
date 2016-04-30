@@ -201,7 +201,6 @@ namespace TranslationFixer
             // Télécharge et exécute la dernière version
             else
             {
-                //System.Diagnostics.Process.Start("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/latest");
                 WebClient Client = new WebClient();
                 Client.DownloadFile("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/download/"+last+"/SDVFRSavePatch_"+last+".exe", "SDVFRSavePatch_"+last+".exe");
                 Process.Start("SDVFRSavePatch_" + last + ".exe");
