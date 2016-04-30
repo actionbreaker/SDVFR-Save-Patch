@@ -22,14 +22,11 @@ namespace TranslationFixer
 
         Fonctions mOperation;
         Form2 mForm2;
-
-        private string pathfileGame;
+        
         private string pathfileName;
-        string pathDirectoryGame;
         string pathDirectoryName;
-        string game;
         string name;
-        string currentVersion = "v0.8.2";
+        string currentVersion = "v0.9";
 
         bool done;
         bool hasUpdate = false;
@@ -41,45 +38,6 @@ namespace TranslationFixer
             label2.Text = currentVersion;
             done = false;
             mOperation = new Fonctions();
-        }
-
-        private void buttonLoadSaveGame_Click(object sender, EventArgs e)   // Charger SaveGameInfo
-        {
-            // Sélection du fichier
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\StardewValley\\Saves";
-            DialogResult result = openFileDialog1.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                pathfileGame = openFileDialog1.FileName;                    // Chemin + Nom fichier
-                pathDirectoryGame = Path.GetDirectoryName(pathfileGame);    // Chemin
-                game = Path.GetFileNameWithoutExtension(pathfileGame);      // Nom fichier
-
-                try
-                {
-                    // Chargement du fichier
-                    // Bon fichier
-                    if (game == "SaveGameInfo")
-                    {
-                        docGame = new XmlDocument();
-                        docGame.Load(pathfileGame);
-                        buttonLoadSaveGame.BackColor = Color.LimeGreen;
-                        buttonLoadSaveGame.Text = game;
-                    }
-                    //Erreur
-                    else
-                    {
-                        buttonLoadSaveGame.BackColor = Color.Firebrick;
-                        buttonLoadSaveGame.Text = "Mauvais fichier";
-                    }
-                }
-                catch
-                {
-                    buttonLoadSaveGame.BackColor = Color.Firebrick;
-                    buttonLoadSaveGame.Text = "Erreur";
-                }
-            }
         }
 
         private void buttonLoadSaveName_Click(object sender, EventArgs e)   // Charger Nom_56557
@@ -107,10 +65,16 @@ namespace TranslationFixer
                     // Bon fichier
                     else
                     {
+                        // Chargement Nom_12345
                         docName = new XmlDocument();
                         docName.Load(pathfileName);
+                        
+                        // Chargement SaveGameInfo
+                        docGame = new XmlDocument();
+                        docGame.Load(pathDirectoryName+"\\SaveGameInfo");
+
                         buttonLoadSaveName.BackColor = Color.LimeGreen;
-                        buttonLoadSaveName.Text = name;
+                        buttonLoadSaveName.Text = name.Trim(new Char[] { '_', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'});
                     }
                 }
                 catch
@@ -131,9 +95,9 @@ namespace TranslationFixer
                     if (checkBoxBackup.Checked == true)
                     {
                         File.Delete(pathDirectoryName + "\\" + name + "BACKUP");
-                        File.Delete(pathDirectoryGame + "\\" + "SaveGameInfoBACKUP");
+                        File.Delete(pathDirectoryName + "\\" + "SaveGameInfoBACKUP");
                         File.Copy(pathfileName, pathDirectoryName + "\\" + name + "BACKUP");
-                        File.Copy(pathfileGame, pathDirectoryGame + "\\" + "SaveGameInfoBACKUP");
+                        File.Copy(pathDirectoryName + "\\SaveGameInfo", pathDirectoryName + "\\" + "SaveGameInfoBACKUP");
                     }
 
                     XmlNodeList[] nodeTab = new XmlNodeList[]{
@@ -161,7 +125,7 @@ namespace TranslationFixer
 
                     // Sauvegarde
                     docName.Save(pathfileName);
-                    docGame.Save(pathfileGame);
+                    docGame.Save(pathDirectoryName + "\\SaveGameInfo");
                     buttonReplace.BackColor = Color.LimeGreen;
                     buttonReplace.Text = "Terminé";
                     done = true;

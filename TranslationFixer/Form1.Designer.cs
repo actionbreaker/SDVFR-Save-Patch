@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.buttonLoadSaveGame = new System.Windows.Forms.Button();
             this.buttonReplace = new System.Windows.Forms.Button();
             this.buttonLoadSaveName = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,21 +40,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // buttonLoadSaveGame
-            // 
-            this.buttonLoadSaveGame.BackColor = System.Drawing.SystemColors.Highlight;
-            this.buttonLoadSaveGame.FlatAppearance.BorderSize = 0;
-            this.buttonLoadSaveGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLoadSaveGame.Font = new System.Drawing.Font("Calibri Light", 15F);
-            this.buttonLoadSaveGame.ForeColor = System.Drawing.Color.White;
-            this.buttonLoadSaveGame.Location = new System.Drawing.Point(0, 55);
-            this.buttonLoadSaveGame.Name = "buttonLoadSaveGame";
-            this.buttonLoadSaveGame.Size = new System.Drawing.Size(287, 54);
-            this.buttonLoadSaveGame.TabIndex = 0;
-            this.buttonLoadSaveGame.Text = "Charger \"SaveGameInfo\"";
-            this.buttonLoadSaveGame.UseVisualStyleBackColor = false;
-            this.buttonLoadSaveGame.Click += new System.EventHandler(this.buttonLoadSaveGame_Click);
-            // 
             // buttonReplace
             // 
             this.buttonReplace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -63,7 +47,7 @@
             this.buttonReplace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReplace.Font = new System.Drawing.Font("Calibri Light", 15F);
             this.buttonReplace.ForeColor = System.Drawing.Color.White;
-            this.buttonReplace.Location = new System.Drawing.Point(0, 211);
+            this.buttonReplace.Location = new System.Drawing.Point(0, 147);
             this.buttonReplace.Name = "buttonReplace";
             this.buttonReplace.Size = new System.Drawing.Size(287, 54);
             this.buttonReplace.TabIndex = 2;
@@ -91,7 +75,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(39, 285);
+            this.label3.Location = new System.Drawing.Point(39, 221);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(216, 17);
             this.label3.TabIndex = 9;
@@ -105,7 +89,7 @@
             this.checkBoxBackup.Checked = true;
             this.checkBoxBackup.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxBackup.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxBackup.Location = new System.Drawing.Point(12, 125);
+            this.checkBoxBackup.Location = new System.Drawing.Point(12, 65);
             this.checkBoxBackup.Name = "checkBoxBackup";
             this.checkBoxBackup.Size = new System.Drawing.Size(269, 38);
             this.checkBoxBackup.TabIndex = 11;
@@ -117,7 +101,7 @@
             // 
             this.labelChgts.AutoSize = true;
             this.labelChgts.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelChgts.Location = new System.Drawing.Point(33, 302);
+            this.labelChgts.Location = new System.Drawing.Point(33, 238);
             this.labelChgts.Name = "labelChgts";
             this.labelChgts.Size = new System.Drawing.Size(0, 17);
             this.labelChgts.TabIndex = 13;
@@ -130,7 +114,7 @@
             this.buttonMAJ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMAJ.Font = new System.Drawing.Font("Calibri", 11F);
             this.buttonMAJ.ForeColor = System.Drawing.Color.White;
-            this.buttonMAJ.Location = new System.Drawing.Point(36, 318);
+            this.buttonMAJ.Location = new System.Drawing.Point(36, 254);
             this.buttonMAJ.Name = "buttonMAJ";
             this.buttonMAJ.Size = new System.Drawing.Size(219, 39);
             this.buttonMAJ.TabIndex = 16;
@@ -142,7 +126,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri Light", 15F);
-            this.label1.Location = new System.Drawing.Point(75, 177);
+            this.label1.Location = new System.Drawing.Point(75, 113);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(148, 31);
             this.label1.TabIndex = 17;
@@ -150,13 +134,12 @@
             // 
             // linkLabel1
             // 
-            this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold);
             this.linkLabel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.linkLabel1.LinkColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.linkLabel1.Location = new System.Drawing.Point(108, 379);
+            this.linkLabel1.Location = new System.Drawing.Point(0, 315);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(70, 17);
+            this.linkLabel1.Size = new System.Drawing.Size(287, 17);
             this.linkLabel1.TabIndex = 18;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Changelog";
@@ -167,7 +150,7 @@
             // 
             this.label2.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label2.Location = new System.Drawing.Point(0, 360);
+            this.label2.Location = new System.Drawing.Point(0, 296);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(287, 19);
             this.label2.TabIndex = 19;
@@ -179,7 +162,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(285, 405);
+            this.ClientSize = new System.Drawing.Size(285, 341);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label1);
@@ -189,7 +172,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonLoadSaveName);
             this.Controls.Add(this.buttonReplace);
-            this.Controls.Add(this.buttonLoadSaveGame);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -200,8 +182,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button buttonLoadSaveGame;
         private System.Windows.Forms.Button buttonReplace;
         private System.Windows.Forms.Button buttonLoadSaveName;
         private System.Windows.Forms.Label label3;
