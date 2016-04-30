@@ -91,9 +91,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.label3.Location = new System.Drawing.Point(105, 289);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 34);
+            this.label3.Size = new System.Drawing.Size(80, 34);
             this.label3.TabIndex = 9;
-            this.label3.Text = "SDV-FR Team\r\nv0.7.1";
+            this.label3.Text = "SDVFR Team\r\nv0.7.2";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // checkBoxBackup

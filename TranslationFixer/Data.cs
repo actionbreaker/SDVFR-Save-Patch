@@ -12,11 +12,25 @@ namespace TranslationFixer
         {
             // TRADUCTIONS
             {"Cooking", "Cuisine"},
-            {"Fish",    "Poisson"},
             {"Scythe",  "Faux"},
+
+            // Items
             {"Weeds",  "Herbes"},
+            {"Fish",    "Poisson"},
             {"Stone",  "Pierre"},
             {"Hay",  "Foin"},
+            {"Wild Horseradish",  "Raifort"},
+            {"Daffodil",  "Jonquille"},
+            {"Wood", "Bois"},
+            {"Leek",  "Poireau"},
+            {"Dandelion",  "Pissenlit"},
+            {"Parsnip",  "Panais"},
+            {"Lumber",  "Bois d'Oeuvre"},
+            {"Emerald",  "Émeraude"},
+            {"Aquamarine",  "Aigue-Marine"},
+            {"Ruby",  "Rubis"},
+            {"Amethyst",  "Améthyste"},
+            {"Topaz",  "Topaze"},
 
             // Outils
             {"Pickaxe",  "Pioche"},
