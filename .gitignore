@@ -27,3 +27,6 @@ TranslationFixer/Properties/Settings.Designer.cs
 *.suo
 TranslationFixer/Data.cs~RF2182bd59.TMP
 TranslationFixer/3mcvcsom.aye~
+*.xml
+packages/Newtonsoft.Json.8.0.3/tools/install.ps1
+packages/Newtonsoft.Json.8.0.3/Newtonsoft.Json.8.0.3.nupkg

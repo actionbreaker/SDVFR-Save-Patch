@@ -139,6 +139,7 @@ namespace TranslationFixer
                     {
                         mOperation.Remplace3(nodeTab[i]);
                     }
+                    
 
                     // Sauvegarde
                     docName.Save(pathfileName);
