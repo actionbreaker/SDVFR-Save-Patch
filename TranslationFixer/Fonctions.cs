@@ -20,18 +20,33 @@ namespace TranslationFixer
             mData = new Data();
         }
 
-        public void Remplace3(XmlNodeList node)     // Traduction en anglais
+        public void Remplace3(XmlNodeList node, string alaqueuleuleu)     // Traduction en anglais
         {
-            for (int i = 0; i < mData.table.GetLength(0); i++)
+            string[,] erdnusse;
+
+            switch (alaqueuleuleu)
+            {
+                case "Français":
+                    erdnusse = mData.tablefr;
+                    break;
+                case "Español":
+                    erdnusse = mData.tablesp;
+                    break;
+                default:
+                    erdnusse = mData.tablefr;
+                    break;
+            }
+
+            for (int i = 0; i < erdnusse.GetLength(0); i++)
             {
                 foreach (XmlElement element in node)
                 {
                     XmlNode currNode = element.FirstChild;          // Initialisation au premier noeud trouvé
                     while (currNode != null)
                     {                       // on parcourt les noeuds
-                        if (currNode.InnerText == mData.table[i, 0])
+                        if (currNode.InnerText == erdnusse[i, 0])
                         {
-                            currNode.InnerText = mData.table[i, 1];
+                            currNode.InnerText = erdnusse[i, 1];
                         }
                         currNode = currNode.NextSibling;            // On passe au noeud d'après
                     }

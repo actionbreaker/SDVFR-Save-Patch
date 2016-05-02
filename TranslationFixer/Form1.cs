@@ -26,7 +26,7 @@ namespace TranslationFixer
         private string pathfileName;
         string pathDirectoryName;
         string name;
-        string currentVersion = "v0.10";
+        string currentVersion = "v0.11";
 
         bool done;
         bool hasUpdate = false;
@@ -39,10 +39,13 @@ namespace TranslationFixer
             done = false;
             mOperation = new Fonctions();
 
+            // Langue par défaut
+            comboBox1.Text = "Français";
+
             // Corriger
             buttonReplace.Enabled = false;
             buttonReplace.BackColor = Color.White;
-            buttonReplace.Text = "Bienvenue";
+            buttonReplace.Text = "Save Patch " + currentVersion;
 
             // Recherche de MAJ
             buttonMAJ.Text = "Recherche...";
@@ -90,19 +93,20 @@ namespace TranslationFixer
                         buttonReplace.Enabled = true;
                         buttonReplace.Font = new Font("Calibri Light", 15F);
                         buttonReplace.BackColor = Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-                        buttonReplace.Text = "Corriger";
+                        buttonReplace.Text = Translate_Traduire();
 
                     }
                 }
                 catch
                 {
-                    buttonLoadSaveName.BackColor = Color.Firebrick;
-                    buttonLoadSaveName.Text = "Erreur";
+                    buttonReplace.Enabled = false;
+                    buttonReplace.BackColor = Color.White;
+                    buttonLoadSaveName.Text = Translate_Erreur();
                 }
             }
         }
 
-        private void buttonReplace_Click(object sender, EventArgs e)
+        private async void buttonReplace_Click(object sender, EventArgs e)
         {
             if (done == false)
             {
@@ -134,23 +138,38 @@ namespace TranslationFixer
                         docGame.SelectNodes("/Farmer/craftingRecipes/item/key/string"),
                     };
 
+                    // Bouton en cours
+                    buttonReplace.Text = EnCours();
+                    buttonReplace.BackColor = Color.DarkOrange;
+
                     // Remplacements
-                    for (int i = 0; i < nodeTab.GetLength(0); i++)
+                    await Task.Run(() =>
                     {
-                        mOperation.Remplace3(nodeTab[i]);
-                    }
-                    
+                        for (int i = 0; i < nodeTab.GetLength(0); i++)
+                        {
+                            mOperation.Remplace3(nodeTab[i], comboBox1.Text);
+                            if (i % 2 != 0)
+                            {
+                                buttonReplace.Text += ".";
+                            }
+                        }
+                    });
 
                     // Sauvegarde
                     docName.Save(pathfileName);
                     docGame.Save(pathDirectoryName + "\\SaveGameInfo");
-                    buttonReplace.BackColor = Color.LimeGreen;
-                    buttonReplace.Text = "Terminé";
+
+                    // Changements tête bouton
+                    buttonReplace.Enabled = false;
+                    buttonReplace.BackColor = Color.White;
+                    buttonReplace.Text = Translate_Terminé();
                     done = true;
                 }
                 catch
                 {
-                    buttonReplace.Text = "Erreur";
+                    buttonReplace.Enabled = false;
+                    buttonReplace.BackColor = Color.White;
+                    buttonReplace.Text = Translate_Erreur();
                 }
             }
         }
@@ -165,6 +184,7 @@ namespace TranslationFixer
                 Process.Start("SDVFRSavePatch_" + last + ".exe");
                 Dispose();
             }
+            // Si pas de MAJ, changelog
             else
             {
                 Process.Start("https://github.com/actionbreaker/SDVFR-Save-Patch/releases");
@@ -202,13 +222,122 @@ namespace TranslationFixer
                 hasUpdate = true;
                 buttonMAJ.Enabled = true;
                 buttonMAJ.BackColor = Color.DarkOrange;
-                buttonMAJ.Text = "Télécharger la " + last;
+                buttonMAJ.Text = Translate_Téléchargerla() + last;
             }
             // Pas de MAJ
             else
             {
                 hasUpdate = false;
-                buttonMAJ.Text = last + " (à jour)";
+                buttonMAJ.Text = "Changelog";
+            }
+        }
+
+        string Translate_Téléchargerla()
+        {
+            string laurentromechkoestunoiseau;
+
+            switch(comboBox1.Text){
+                case "Français":
+                    laurentromechkoestunoiseau = "Télécharger la ";
+                    break;
+                case "Español":
+                    laurentromechkoestunoiseau = "Descargar ";
+                    break;
+                default:
+                    laurentromechkoestunoiseau = "Download ";
+                    break;
+            }
+            return laurentromechkoestunoiseau;
+        }
+
+        string Translate_Traduire()
+        {
+            string laurentromechkoestunoiseau;
+            switch (comboBox1.Text)
+            {
+                case "Français":
+                    laurentromechkoestunoiseau = "Traduire";
+                    break;
+                case "Español":
+                    laurentromechkoestunoiseau = "Traducir";
+                    break;
+                default:
+                    laurentromechkoestunoiseau = "Translate";
+                    break;
+            }
+            return laurentromechkoestunoiseau;
+        }
+
+        string Translate_Terminé()
+        {
+            string laurentromechkoestunoiseau;
+            switch (comboBox1.Text)
+            {
+                case "Français":
+                    laurentromechkoestunoiseau = "Terminé !";
+                    break;
+                case "Español":
+                    laurentromechkoestunoiseau = "Completar !";
+                    break;
+                default:
+                    laurentromechkoestunoiseau = "Done !";
+                    break;
+            }
+            return laurentromechkoestunoiseau;
+        }
+
+        string Translate_Erreur()
+        {
+            string laurentromechkoestunoiseau;
+            switch (comboBox1.Text)
+            {
+                case "Français":
+                    laurentromechkoestunoiseau = "Erreur";
+                    break;
+                case "Español":
+                    laurentromechkoestunoiseau = "Error";
+                    break;
+                default:
+                    laurentromechkoestunoiseau = "Error";
+                    break;
+            }
+            return laurentromechkoestunoiseau;
+        }
+
+        string EnCours()
+        {
+            string laurentromechkoestunoiseau;
+            switch (comboBox1.Text)
+            {
+                case "Français":
+                    laurentromechkoestunoiseau = "En cours";
+                    break;
+                case "Español":
+                    laurentromechkoestunoiseau = "En curso";
+                    break;
+                default:
+                    laurentromechkoestunoiseau = "Working";
+                    break;
+            }
+            return laurentromechkoestunoiseau;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox1.Text)
+            {
+                case "Français":
+                    buttonLoadSaveName.Text = "Charger \"Nom_12345\"";
+                    checkBoxBackup.Text = "Backup dans le dossier de la save";
+                    break;
+                case "Español":
+                    buttonLoadSaveName.Text = "Cargar \"Name_12345\"";
+                    checkBoxBackup.Text = "Copia de seguridad";
+                    break;
+                default:
+                    buttonLoadSaveName.Text = "Load \"Name_12345\"";
+                    checkBoxBackup.Text = "Backup in the save's folder";
+                    break;
             }
         }
     }
