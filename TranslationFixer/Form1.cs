@@ -26,9 +26,10 @@ namespace TranslationFixer
         private string pathfileName;
         string pathDirectoryName;
         string name;
-        string currentVersion = "v0.11";
+        string currentVersion = "v0.12";
 
         bool done;
+        bool fileLoaded;
         bool hasUpdate = false;
         string last;
 
@@ -37,6 +38,7 @@ namespace TranslationFixer
             InitializeComponent();
             
             done = false;
+            fileLoaded = false;
             mOperation = new Fonctions();
 
             // Langue par défaut
@@ -79,6 +81,7 @@ namespace TranslationFixer
                     else
                     {
                         // Chargement Nom_12345
+                        fileLoaded = true;
                         docName = new XmlDocument();
                         docName.Load(pathfileName);
                         
@@ -327,15 +330,36 @@ namespace TranslationFixer
             switch (comboBox1.Text)
             {
                 case "Français":
-                    buttonLoadSaveName.Text = "Charger \"Nom_12345\"";
+                    if (fileLoaded == false)
+                    {
+                        buttonLoadSaveName.Text = "Charger \"Nom_12345\"";
+                    }
+                    else
+                    {
+                        buttonReplace.Text = Translate_Traduire();
+                    }
                     checkBoxBackup.Text = "Backup dans le dossier de la save";
                     break;
                 case "Español":
-                    buttonLoadSaveName.Text = "Cargar \"Name_12345\"";
+                    if (fileLoaded == false)
+                    {
+                        buttonLoadSaveName.Text = "Cargar \"Name_12345\"";
+                    }
+                    else
+                    {
+                        buttonReplace.Text = Translate_Traduire();
+                    }
                     checkBoxBackup.Text = "Copia de seguridad";
                     break;
                 default:
-                    buttonLoadSaveName.Text = "Load \"Name_12345\"";
+                    if (fileLoaded == false)
+                    {
+                        buttonLoadSaveName.Text = "Load \"Name_12345\"";
+                    }
+                    else
+                    {
+                        buttonReplace.Text = Translate_Traduire();
+                    }
                     checkBoxBackup.Text = "Backup in the save's folder";
                     break;
             }

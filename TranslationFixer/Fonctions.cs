@@ -32,6 +32,15 @@ namespace TranslationFixer
                 case "Español":
                     erdnusse = mData.tablesp;
                     break;
+                case "Český":
+                    erdnusse = mData.tablecz;
+                    break;
+                case "Deutsch":
+                    erdnusse = mData.tablede;
+                    break;
+                case "Português":
+                    erdnusse = mData.tablept;
+                    break;
                 default:
                     erdnusse = mData.tablefr;
                     break;

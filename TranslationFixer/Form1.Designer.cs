@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.buttonReplace = new System.Windows.Forms.Button();
             this.buttonLoadSaveName = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.buttonMAJ = new System.Windows.Forms.Button();
             this.checkBoxBackup = new System.Windows.Forms.CheckBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // buttonReplace
@@ -67,17 +67,6 @@
             this.buttonLoadSaveName.Text = "Charger \"Nom_12345\"";
             this.buttonLoadSaveName.UseVisualStyleBackColor = false;
             this.buttonLoadSaveName.Click += new System.EventHandler(this.buttonLoadSaveName_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label3.Location = new System.Drawing.Point(33, 276);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(0, 17);
-            this.label3.TabIndex = 9;
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // buttonMAJ
             // 
@@ -117,8 +106,11 @@
             this.comboBox1.Font = new System.Drawing.Font("Calibri", 7.8F);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
+            "Český",
+            "Deutsch",
+            "Español",
             "Français",
-            "Español"});
+            "Português"});
             this.comboBox1.Location = new System.Drawing.Point(82, 41);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
@@ -135,23 +127,36 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Select your language";
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Calibri", 9F);
+            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.linkLabel1.Location = new System.Drawing.Point(6, 275);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(272, 18);
+            this.linkLabel1.TabIndex = 19;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Created by the SDV Translation Community";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(285, 279);
+            this.ClientSize = new System.Drawing.Size(285, 300);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonMAJ);
             this.Controls.Add(this.checkBoxBackup);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonLoadSaveName);
             this.Controls.Add(this.buttonReplace);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SDVFR";
+            this.Text = "Save Patch";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,11 +165,11 @@
         #endregion
         private System.Windows.Forms.Button buttonReplace;
         private System.Windows.Forms.Button buttonLoadSaveName;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonMAJ;
         private System.Windows.Forms.CheckBox checkBoxBackup;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
