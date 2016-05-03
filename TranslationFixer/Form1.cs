@@ -26,7 +26,7 @@ namespace TranslationFixer
         private string pathfileName;
         string pathDirectoryName;
         string name;
-        string currentVersion = "v0.12";
+        string currentVersion = "v0.12.1";
 
         bool done;
         bool fileLoaded;
@@ -363,6 +363,11 @@ namespace TranslationFixer
                     checkBoxBackup.Text = "Backup in the save's folder";
                     break;
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://community.playstarbound.com/threads/fan-translation-projects-pt-fr-sp-cz-de.114398/");
         }
     }
 }

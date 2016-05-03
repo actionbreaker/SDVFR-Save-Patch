@@ -1321,7 +1321,7 @@ namespace TranslationFixer
 
         public string[,] tablesp = new string[,]
         {
-                    {"Greenhorn (15k)", "Novato (15m)"},
+                 {"Greenhorn (15k)", "Novato (15m)"},
         {"Cowpoke (50k)", "Vaquero (50m)"},
         {"Homesteader (250k)", "Colono (250m)"},
         {"Millionaire (1mil)", "Millonario (1mill)"},
