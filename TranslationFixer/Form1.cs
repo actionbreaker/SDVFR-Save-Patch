@@ -95,7 +95,7 @@ namespace TranslationFixer
                         // Bouton "Corriger"
                         buttonReplace.Enabled = true;
                         buttonReplace.Font = new Font("Calibri Light", 15F);
-                        buttonReplace.BackColor = Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+                        buttonReplace.BackColor = SystemColors.Highlight;
                         buttonReplace.Text = Translate_Traduire();
 
                     }
