@@ -12,21 +12,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace TranslationFixer
 {
     public partial class Form1 : Form
     {
-        XmlDocument docGame;
-        XmlDocument docName;
-
         Fonctions mOperation;
         Form2 mForm2;
+
         
+
+        XDocument docName;
+        XDocument docGame;
+
         private string pathfileName;
         string pathDirectoryName;
         string name;
-        string currentVersion = "v0.12.1";
+        string currentVersion = "v0.13";
 
         bool done;
         bool fileLoaded;
@@ -82,12 +85,10 @@ namespace TranslationFixer
                     {
                         // Chargement Nom_12345
                         fileLoaded = true;
-                        docName = new XmlDocument();
-                        docName.Load(pathfileName);
-                        
+                        docName = XDocument.Load(pathfileName);
+
                         // Chargement SaveGameInfo
-                        docGame = new XmlDocument();
-                        docGame.Load(pathDirectoryName+"\\SaveGameInfo");
+                        docGame = XDocument.Load(pathDirectoryName+"\\SaveGameInfo");
 
                         buttonLoadSaveName.BackColor = Color.LimeGreen;
                         buttonLoadSaveName.Text = name.Trim(new Char[] { '_', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'});
@@ -97,7 +98,6 @@ namespace TranslationFixer
                         buttonReplace.Font = new Font("Calibri Light", 15F);
                         buttonReplace.BackColor = SystemColors.Highlight;
                         buttonReplace.Text = Translate_Traduire();
-
                     }
                 }
                 catch
@@ -109,54 +109,33 @@ namespace TranslationFixer
             }
         }
 
-        private async void buttonReplace_Click(object sender, EventArgs e)
+        private async void buttonReplace_Click(object sender, EventArgs el)
         {
             if (done == false)
             {
                 try
                 {
+                    // Bouton en cours
+                    buttonReplace.Enabled = false;
+                    buttonReplace.BackColor = Color.White;
+                    
                     // Backup
                     if (checkBoxBackup.Checked == true)
                     {
+                        buttonReplace.Text = "Backup...";
                         File.Delete(pathDirectoryName + "\\" + name + "BACKUP");
                         File.Delete(pathDirectoryName + "\\" + "SaveGameInfoBACKUP");
                         File.Copy(pathfileName, pathDirectoryName + "\\" + name + "BACKUP");
                         File.Copy(pathDirectoryName + "\\SaveGameInfo", pathDirectoryName + "\\" + "SaveGameInfoBACKUP");
                     }
 
-                    XmlNodeList[] nodeTab = new XmlNodeList[]{
-                        // Lieux où chercher (Name)
-                        docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/items/Item"),
-                        docName.SelectNodes("/SaveGame/player/items/Item"),
-                        docName.SelectNodes("/SaveGame/locations/GameLocation/buildings/Building/indoors/name"),
-                        docName.SelectNodes("/SaveGame/locations/GameLocation/buildings/Building/buildingType"),
-                        docName.SelectNodes("/SaveGame/player/craftingRecipes/item/key/string"),
-                        docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/Name"),
-                        docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/name"),
-                        docName.SelectNodes("/SaveGame/locations/GameLocation/buildings/Building/indoors/objects/item/value/Object/Name"),
-                        docName.SelectNodes("/SaveGame/locations/GameLocation/buildings/Building/indoors/objects/item/value/Object/name"),
-
-                        // Lieux où chercher (Game)
-                        docGame.SelectNodes("/Farmer/items/Item"),
-                        docGame.SelectNodes("/Farmer/craftingRecipes/item/key/string"),
-                    };
-
-                    // Bouton en cours
-                    buttonReplace.Text = EnCours();
-                    buttonReplace.BackColor = Color.DarkOrange;
-
                     // Remplacements
                     await Task.Run(() =>
                     {
-                        for (int i = 0; i < nodeTab.GetLength(0); i++)
-                        {
-                            mOperation.Remplace3(nodeTab[i], comboBox1.Text);
-                            if (i % 2 != 0)
-                            {
-                                buttonReplace.Text += ".";
-                            }
-                        }
+                        mOperation.RemplaceDraivin(docName, docGame, comboBox1.Text,buttonReplace);
                     });
+
+                    
 
                     // Sauvegarde
                     docName.Save(pathfileName);

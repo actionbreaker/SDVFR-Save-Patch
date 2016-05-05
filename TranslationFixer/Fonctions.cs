@@ -7,7 +7,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace TranslationFixer
 {
@@ -61,6 +63,76 @@ namespace TranslationFixer
                     }
                 }
             }
+        }
+
+        public bool RemplaceDraivin(XDocument Name, XDocument Game, string alaqueuleuleu, Button toast)
+        {
+            string[,] erdnusse;
+            toast.Text = "...";
+            switch (alaqueuleuleu)
+            {
+                case "Français":
+                    erdnusse = mData.tablefr;
+                    break;
+                case "Español":
+                    erdnusse = mData.tablesp;
+                    break;
+                case "Český":
+                    erdnusse = mData.tablecz;
+                    break;
+                case "Deutsch":
+                    erdnusse = mData.tablede;
+                    break;
+                case "Português":
+                    erdnusse = mData.tablept;
+                    break;
+                default:
+                    erdnusse = mData.tablefr;
+                    break;
+            }
+            
+            var leaves =
+                from e in Name.Descendants()
+                where !e.Elements().Any()
+                select e;
+
+            for (int i = 0; i < erdnusse.GetLength(0); i++)
+            {
+                foreach (var leaf in leaves)
+                {
+                    var value = leaf.Value;
+                    if(value == erdnusse[i, 0])
+                    {
+                        value = erdnusse[i, 1];
+                        toast.Text = value;
+                    }
+
+                    leaf.Value = value;
+                }
+            }
+
+            toast.Text = "...";
+            var leavess =
+                from e in Game.Descendants()
+                where !e.Elements().Any()
+                select e;
+
+            for (int i = 0; i < erdnusse.GetLength(0); i++)
+            {
+                foreach (var leaff in leavess)
+                {
+                    var value = leaff.Value;
+                    if (value == erdnusse[i, 0])
+                    {
+                        value = erdnusse[i, 1];
+                        toast.Text = value;
+                    }
+
+                    leaff.Value = value;
+                }
+            }
+
+            return true;
         }
 
         public void RemplaceEN(XmlNodeList node)    // Traduction en anglais
