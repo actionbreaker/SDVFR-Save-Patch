@@ -22,7 +22,7 @@ namespace TranslationFixer
         private string pathfileName;
         string pathDirectoryName;
         string name;
-        string currentVersion = "v0.13";
+        string currentVersion = "v0.13.1";
 
         bool done;
         bool fileLoaded;
