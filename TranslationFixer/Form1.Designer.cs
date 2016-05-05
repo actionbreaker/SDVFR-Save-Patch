@@ -36,6 +36,7 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.labelCompWith = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonReplace
@@ -111,9 +112,9 @@
             "Español",
             "Français",
             "Português"});
-            this.comboBox1.Location = new System.Drawing.Point(82, 41);
+            this.comboBox1.Location = new System.Drawing.Point(63, 41);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.Size = new System.Drawing.Size(88, 23);
             this.comboBox1.TabIndex = 17;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -141,12 +142,22 @@
             this.linkLabel1.Text = "Created by the SDV Translation Community";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // labelCompWith
+            // 
+            this.labelCompWith.AutoSize = true;
+            this.labelCompWith.Font = new System.Drawing.Font("Calibri", 9F);
+            this.labelCompWith.Location = new System.Drawing.Point(160, 43);
+            this.labelCompWith.Name = "labelCompWith";
+            this.labelCompWith.Size = new System.Drawing.Size(0, 18);
+            this.labelCompWith.TabIndex = 20;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(285, 300);
+            this.Controls.Add(this.labelCompWith);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
@@ -171,6 +182,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label labelCompWith;
     }
 }
 
