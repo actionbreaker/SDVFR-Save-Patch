@@ -1,12 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
+﻿using System.Globalization;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
@@ -90,7 +84,7 @@ namespace TranslationFixer
                     erdnusse = mData.tablefr;
                     break;
             }
-            
+
             var leaves =
                 from e in Name.Descendants()
                 where !e.Elements().Any()
@@ -101,7 +95,7 @@ namespace TranslationFixer
                 foreach (var leaf in leaves)
                 {
                     var value = leaf.Value;
-                    if(value == erdnusse[i, 0])
+                    if (value == erdnusse[i, 0])
                     {
                         value = erdnusse[i, 1];
                         toast.Text = value;

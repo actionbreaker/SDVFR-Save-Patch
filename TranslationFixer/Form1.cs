@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
 using System.Xml.Linq;
 
 namespace TranslationFixer
@@ -20,8 +15,6 @@ namespace TranslationFixer
     {
         Fonctions mOperation;
         Form2 mForm2;
-
-        
 
         XDocument docName;
         XDocument docGame;
@@ -39,7 +32,7 @@ namespace TranslationFixer
         public Form1()
         {
             InitializeComponent();
-            
+
             done = false;
             fileLoaded = false;
             mOperation = new Fonctions();
@@ -55,7 +48,7 @@ namespace TranslationFixer
             // Recherche de MAJ
             buttonMAJ.Text = "Recherche...";
             CheckUpdate();
-            
+
         }
 
         private void buttonLoadSaveName_Click(object sender, EventArgs e)   // Charger Nom_56557
@@ -88,10 +81,10 @@ namespace TranslationFixer
                         docName = XDocument.Load(pathfileName);
 
                         // Chargement SaveGameInfo
-                        docGame = XDocument.Load(pathDirectoryName+"\\SaveGameInfo");
+                        docGame = XDocument.Load(pathDirectoryName + "\\SaveGameInfo");
 
                         buttonLoadSaveName.BackColor = Color.LimeGreen;
-                        buttonLoadSaveName.Text = name.Trim(new Char[] { '_', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'});
+                        buttonLoadSaveName.Text = name.Trim(new Char[] { '_', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' });
 
                         // Bouton "Corriger"
                         buttonReplace.Enabled = true;
@@ -118,7 +111,7 @@ namespace TranslationFixer
                     // Bouton en cours
                     buttonReplace.Enabled = false;
                     buttonReplace.BackColor = Color.White;
-                    
+
                     // Backup
                     if (checkBoxBackup.Checked == true)
                     {
@@ -132,10 +125,8 @@ namespace TranslationFixer
                     // Remplacements
                     await Task.Run(() =>
                     {
-                        mOperation.RemplaceDraivin(docName, docGame, comboBox1.Text,buttonReplace);
+                        mOperation.RemplaceDraivin(docName, docGame, comboBox1.Text, buttonReplace);
                     });
-
-                    
 
                     // Sauvegarde
                     docName.Save(pathfileName);
@@ -159,10 +150,10 @@ namespace TranslationFixer
         private void buttonMAJ_Click(object sender, EventArgs e)
         {
             // Télécharge et exécute la dernière version
-            if(hasUpdate)
+            if (hasUpdate)
             {
                 WebClient Client = new WebClient();
-                Client.DownloadFile("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/download/"+last+"/SDVFRSavePatch_"+last+".exe", "SDVFRSavePatch_"+last+".exe");
+                Client.DownloadFile("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/download/" + last + "/SDVFRSavePatch_" + last + ".exe", "SDVFRSavePatch_" + last + ".exe");
                 Process.Start("SDVFRSavePatch_" + last + ".exe");
                 Dispose();
             }
@@ -218,7 +209,8 @@ namespace TranslationFixer
         {
             string laurentromechkoestunoiseau;
 
-            switch(comboBox1.Text){
+            switch (comboBox1.Text)
+            {
                 case "Français":
                     laurentromechkoestunoiseau = "Télécharger la ";
                     break;
