@@ -22,7 +22,7 @@ namespace TranslationFixer
         private string pathfileName;
         string pathDirectoryName;
         string name;
-        string currentVersion = "v0.13.1";
+        string currentVersion = "v0.13.2";
 
         bool done;
         bool fileLoaded;
@@ -322,7 +322,7 @@ namespace TranslationFixer
                         buttonReplace.Text = Translate_Traduire();
                     }
                     checkBoxBackup.Text = "Copia de seguridad";
-                    labelCompWith.Text = "para v1.4.2";
+                    labelCompWith.Text = "para v1.4.3";
                     break;
                 default:
                     if (fileLoaded == false)

@@ -1315,7 +1315,7 @@
 
         public string[,] tablesp = new string[,]
         {
-                 {"Greenhorn (15k)", "Novato (15m)"},
+                         {"Greenhorn (15k)", "Novato (15m)"},
         {"Cowpoke (50k)", "Vaquero (50m)"},
         {"Homesteader (250k)", "Colono (250m)"},
         {"Millionaire (1mil)", "Millonario (1mill)"},
@@ -1393,7 +1393,7 @@
         {"Stone Owl", "Bhúo de piedra"},
         {"Strange Capsule", "Cápsula estraña"},
         {"Empty Capsule", "Cápsula Vacía"},
-        {"Feed Hopper", "Tolva de alimentación"},
+        {"Feed Hopper", "Tolva"},
         {"Incubator", "Incubadora"},
         {"Heater", "Calentador"},
         {"Tapper", "Extractor"},
@@ -1876,7 +1876,7 @@
         {"Sludge", "Slime rojo"},
         {"Shadow Guy", "Hombre de las sombras"},
         {"Ghost", "Fantasma"},
-        {"Duggy", "Excavador"},
+        {"Duggy", "Topillo"},
         {"Rock Crab", "Cangrejo de piedra"},
         {"Lava Crab", "Cangrejo de lava"},
         {"Fireball", "Bola de fuego"},
@@ -2279,7 +2279,7 @@
         {"Claymore", "Claymore"},
         {"Steel Smallsword", "Espada pequeña de acero"},
         {"Wooden Blade", "Espada de madera"},
-        {"Insect Head", "Insect Head"},
+        {"Insect Head", "Cabeza de insecto"},
         {"Neptune's Glaive", "Lanza de neptuno"},
         {"Forest Sword", "Espada del bosque"},
         {"Carving Knife", "Cuchillo de tallar"},
@@ -2382,6 +2382,10 @@
         {"Spirit's Eve", "Noche de los Espíritus"},
         {"Festival of Ice", "Festival del Hielo"},
         {"Feast of the Winter Star", "Fiesta de la Estrella Invernal"},
+        {"Tolva de alimentación", "Tolva"},
+        // 1.4.2 -> 1.4.3
+        {"Tolva de alimentación", "Tolva"},
+        {"Excavador", "Topillo"},
         };
 
         public string[,] tablecz = new string[,]
