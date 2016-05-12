@@ -305,7 +305,7 @@ namespace TranslationFixer
                         buttonReplace.Text = Translate_Traduire();
                     }
                     checkBoxBackup.Text = "Backup dans le dossier de la save";
-                    labelCompWith.Text = "pour v0.30";
+                    labelCompWith.Text = "pour v0.32";
                     break;
                 case "Español":
                     if (fileLoaded == false)
