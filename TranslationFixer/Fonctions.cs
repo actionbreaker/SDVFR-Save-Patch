@@ -28,15 +28,15 @@ namespace TranslationFixer
                 case "Español":
                     erdnusse = mData.tablesp;
                     break;
-                case "Český":
-                    erdnusse = mData.tablecz;
+                /*case "Český":
+                    //erdnusse = mData.tablecz;
                     break;
                 case "Deutsch":
-                    erdnusse = mData.tablede;
+                    //erdnusse = mData.tablede;
                     break;
                 case "Português":
-                    erdnusse = mData.tablept;
-                    break;
+                    //erdnusse = mData.tablept;
+                    break;*/
                 default:
                     erdnusse = mData.tablefr;
                     break;
@@ -62,7 +62,7 @@ namespace TranslationFixer
         public bool RemplaceDraivin(XDocument Name, XDocument Game, string alaqueuleuleu, Button toast)
         {
             string[,] erdnusse;
-            toast.Text = "...";
+            toast.Text = "0%";
             switch (alaqueuleuleu)
             {
                 case "Français":
@@ -71,15 +71,15 @@ namespace TranslationFixer
                 case "Español":
                     erdnusse = mData.tablesp;
                     break;
-                case "Český":
-                    erdnusse = mData.tablecz;
+                /*case "Český":
+                    //erdnusse = mData.tablecz;
                     break;
                 case "Deutsch":
-                    erdnusse = mData.tablede;
+                    //erdnusse = mData.tablede;
                     break;
                 case "Português":
-                    erdnusse = mData.tablept;
-                    break;
+                    //erdnusse = mData.tablept;
+                    break;*/
                 default:
                     erdnusse = mData.tablefr;
                     break;
@@ -98,7 +98,11 @@ namespace TranslationFixer
                     if (value == erdnusse[i, 0])
                     {
                         value = erdnusse[i, 1];
-                        toast.Text = value;
+                        // Esthétique
+                        if ((i/10) <= 100)
+                            toast.Text = "(1/2) " + (i / 10).ToString() + "%";
+                        else
+                            toast.Text = "...";
                     }
 
                     leaf.Value = value;
@@ -119,7 +123,11 @@ namespace TranslationFixer
                     if (value == erdnusse[i, 0])
                     {
                         value = erdnusse[i, 1];
-                        toast.Text = value;
+                        // Esthétique
+                        if ((i / 10) <= 100)
+                            toast.Text = "(2/2) " + (i / 10).ToString() + "%";
+                        else
+                            toast.Text = "...";
                     }
 
                     leaff.Value = value;
