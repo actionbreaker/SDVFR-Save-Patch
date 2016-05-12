@@ -31,3 +31,6 @@ TranslationFixer/3mcvcsom.aye~
 packages/Newtonsoft.Json.8.0.3/tools/install.ps1
 packages/Newtonsoft.Json.8.0.3/Newtonsoft.Json.8.0.3.nupkg
 TranslationFixer/KtB6QLE.ico
+TranslationFixer/obj/Debug/SDVSavePatch.exe
+TranslationFixer/bin/Debug/SDVSavePatch.exe
+TranslationFixer/bin/Debug/SDVSavePatch.vshost.exe

@@ -107,11 +107,8 @@
             this.comboBox1.Font = new System.Drawing.Font("Calibri", 7.8F);
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Český",
-            "Deutsch",
-            "Español",
             "Français",
-            "Português"});
+            "Español"});
             this.comboBox1.Location = new System.Drawing.Point(63, 41);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(88, 23);

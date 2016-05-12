@@ -14,7 +14,6 @@ namespace TranslationFixer
     public partial class Form1 : Form
     {
         Fonctions mOperation;
-        Form2 mForm2;
 
         XDocument docName;
         XDocument docGame;
@@ -22,7 +21,7 @@ namespace TranslationFixer
         private string pathfileName;
         string pathDirectoryName;
         string name;
-        string currentVersion = "v0.13.2";
+        string currentVersion = "v0.13.3";
 
         bool done;
         bool fileLoaded;
@@ -48,7 +47,6 @@ namespace TranslationFixer
             // Recherche de MAJ
             buttonMAJ.Text = "Recherche...";
             CheckUpdate();
-
         }
 
         private void buttonLoadSaveName_Click(object sender, EventArgs e)   // Charger Nom_56557
@@ -169,13 +167,10 @@ namespace TranslationFixer
             if (!checkBoxBackup.Checked)
             {
                 checkBoxBackup.ForeColor = Color.Red;
-                mForm2 = new Form2();
-                mForm2.Show();
             }
             else
             {
                 checkBoxBackup.ForeColor = Color.Black;
-                mForm2.Close();
             }
         }
 
@@ -251,7 +246,7 @@ namespace TranslationFixer
                     laurentromechkoestunoiseau = "Terminé !";
                     break;
                 case "Español":
-                    laurentromechkoestunoiseau = "Completar !";
+                    laurentromechkoestunoiseau = "Completado !";
                     break;
                 default:
                     laurentromechkoestunoiseau = "Done !";
