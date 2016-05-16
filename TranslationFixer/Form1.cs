@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace TranslationFixer
@@ -15,29 +16,39 @@ namespace TranslationFixer
     {
         Fonctions mOperation;
 
-        XDocument docName;
-        XDocument docGame;
+        XmlDocument docGame;
+        XmlDocument docName;
 
         private string pathfileName;
         string pathDirectoryName;
         string name;
-        string currentVersion = "v0.13.3.1";
+        string currentVersion = "v0.14";
 
         bool done;
         bool fileLoaded;
         bool hasUpdate = false;
         string last;
+        string[] directories;
 
         public Form1()
         {
             InitializeComponent();
+
+            directories = Directory.GetDirectories(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\StardewValley\\Saves");
+            int i = 0;
+
+            while (i < directories.GetLength(0))
+            {
+                comboBoxSave.Items.AddRange(new object[] { Path.GetFileNameWithoutExtension(directories[i]).Trim(new Char[] { '_', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' }) });
+                i++;
+            }
 
             done = false;
             fileLoaded = false;
             mOperation = new Fonctions();
 
             // Langue par défaut
-            comboBox1.Text = "Français";
+            comboBoxSave.Text = "Français";
 
             // Corriger
             buttonReplace.Enabled = false;
@@ -49,100 +60,91 @@ namespace TranslationFixer
             CheckUpdate();
         }
 
-        private void buttonLoadSaveName_Click(object sender, EventArgs e)   // Charger Nom_56557
+        private void comboBoxSave_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Sélection du fichier
-            OpenFileDialog openFileDialog2 = new OpenFileDialog();
-            openFileDialog2.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\StardewValley\\Saves";
-            DialogResult result = openFileDialog2.ShowDialog();
+            int index = comboBoxSave.SelectedIndex;
+            name = Path.GetFileNameWithoutExtension(directories[index]);
+            pathfileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\StardewValley\\Saves\\" + name + "\\" + name;
+            pathDirectoryName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\StardewValley\\Saves\\" + name;
 
-            if (result == DialogResult.OK)
+            docName = new XmlDocument();
+            docName.Load(pathfileName);
+            docGame = new XmlDocument();
+            docGame.Load(pathDirectoryName + "\\SaveGameInfo");
+
+            // Bouton "Corriger"
+            if ((comboBox1.Text != "") && (comboBoxSave.Text != ""))
             {
-                pathfileName = openFileDialog2.FileName;                    // Chemin + Nom fichier
-                pathDirectoryName = Path.GetDirectoryName(pathfileName);    // Chemin
-                name = Path.GetFileNameWithoutExtension(pathfileName);      // Nom fichier
-
-                try
-                {
-                    // Chargement du fichier
-                    // Erreur
-                    if (name == "SaveGameInfo")
-                    {
-                        buttonLoadSaveName.BackColor = Color.Firebrick;
-                        buttonLoadSaveName.Text = "Mauvais fichier";
-                    }
-                    // Bon fichier
-                    else
-                    {
-                        // Chargement Nom_12345
-                        fileLoaded = true;
-                        docName = XDocument.Load(pathfileName);
-
-                        // Chargement SaveGameInfo
-                        docGame = XDocument.Load(pathDirectoryName + "\\SaveGameInfo");
-
-                        buttonLoadSaveName.BackColor = Color.LimeGreen;
-                        buttonLoadSaveName.Text = name.Trim(new Char[] { '_', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' });
-
-                        // Bouton "Corriger"
-                        buttonReplace.Enabled = true;
-                        buttonReplace.Font = new Font("Calibri Light", 15F);
-                        buttonReplace.BackColor = SystemColors.Highlight;
-                        buttonReplace.Text = Translate_Traduire();
-                    }
-                }
-                catch
-                {
-                    buttonReplace.Enabled = false;
-                    buttonReplace.BackColor = Color.White;
-                    buttonLoadSaveName.Text = Translate_Erreur();
-                }
+                buttonReplace.Enabled = true;
+                buttonReplace.Font = new Font("Calibri Light", 15F);
+                buttonReplace.BackColor = SystemColors.Highlight;
+                buttonReplace.Text = Translate_Traduire();
             }
         }
 
         private async void buttonReplace_Click(object sender, EventArgs el)
         {
-            if (done == false)
+            try
             {
-                try
-                {
-                    // Bouton en cours
-                    buttonReplace.Enabled = false;
-                    buttonReplace.BackColor = Color.White;
+                // Bouton en cours
+                buttonReplace.Enabled = false;
+                buttonReplace.BackColor = Color.White;
 
-                    // Backup
-                    if (checkBoxBackup.Checked == true)
+                // Backup
+                if (checkBoxBackup.Checked == true)
+                {
+                    buttonReplace.Text = "Backup...";
+                    File.Delete(pathDirectoryName + "\\" + name + "BACKUP");
+                    File.Delete(pathDirectoryName + "\\" + "SaveGameInfoBACKUP");
+                    File.Copy(pathfileName, pathDirectoryName + "\\" + name + "BACKUP");
+                    File.Copy(pathDirectoryName + "\\SaveGameInfo", pathDirectoryName + "\\" + "SaveGameInfoBACKUP");
+                }
+
+                XmlNodeList[] nodeTab = new XmlNodeList[]{
+                    // Lieux où chercher (Name)
+                    docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/items/Item"),
+                    docName.SelectNodes("/SaveGame/player/items/Item"),
+                    docName.SelectNodes("/SaveGame/locations/GameLocation/buildings/Building/indoors/name"),
+                    docName.SelectNodes("/SaveGame/locations/GameLocation/buildings/Building/buildingType"),
+                    docName.SelectNodes("/SaveGame/player/craftingRecipes/item/key/string"),
+                    docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/Name"),
+                    docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/name"),
+                    docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/heldObject/Name"),
+                    docName.SelectNodes("/SaveGame/locations/GameLocation/objects/item/value/Object/heldObject/name"),
+                    docName.SelectNodes("/SaveGame/locations/GameLocation/buildings/Building/indoors/objects/item/value/Object/Name"),
+                    docName.SelectNodes("/SaveGame/locations/GameLocation/buildings/Building/indoors/objects/item/value/Object/name"),
+
+                    // Lieux où chercher (Game)
+                    docGame.SelectNodes("/Farmer/items/Item"),
+                    docGame.SelectNodes("/Farmer/craftingRecipes/item/key/string"),
+                };
+
+                // Remplacements
+                await Task.Run(() =>
+                {
+                    for (int i = 0; i < nodeTab.GetLength(0); i++)
                     {
-                        buttonReplace.Text = "Backup...";
-                        File.Delete(pathDirectoryName + "\\" + name + "BACKUP");
-                        File.Delete(pathDirectoryName + "\\" + "SaveGameInfoBACKUP");
-                        File.Copy(pathfileName, pathDirectoryName + "\\" + name + "BACKUP");
-                        File.Copy(pathDirectoryName + "\\SaveGameInfo", pathDirectoryName + "\\" + "SaveGameInfoBACKUP");
+                        mOperation.Remplace3(nodeTab[i], comboBox1.Text, buttonReplace);
                     }
+                });
 
-                    // Remplacements
-                    await Task.Run(() =>
-                    {
-                        mOperation.RemplaceDraivin(docName, docGame, comboBox1.Text, buttonReplace);
-                    });
+                // Sauvegarde
+                docName.Save(pathfileName);
+                docGame.Save(pathDirectoryName + "\\SaveGameInfo");
 
-                    // Sauvegarde
-                    docName.Save(pathfileName);
-                    docGame.Save(pathDirectoryName + "\\SaveGameInfo");
-
-                    // Changements tête bouton
-                    buttonReplace.Enabled = false;
-                    buttonReplace.BackColor = Color.White;
-                    buttonReplace.Text = Translate_Terminé();
-                    done = true;
-                }
-                catch
-                {
-                    buttonReplace.Enabled = false;
-                    buttonReplace.BackColor = Color.White;
-                    buttonReplace.Text = Translate_Erreur();
-                }
+                // Changements tête bouton
+                buttonReplace.Enabled = false;
+                buttonReplace.BackColor = Color.White;
+                buttonReplace.Text = Translate_Terminé();
+                done = true;
             }
+            catch
+            {
+                buttonReplace.Enabled = false;
+                buttonReplace.BackColor = Color.White;
+                buttonReplace.Text = Translate_Erreur();
+            }
+            
         }
 
         private void buttonMAJ_Click(object sender, EventArgs e)
@@ -298,7 +300,6 @@ namespace TranslationFixer
                 case "Français":
                     if (fileLoaded == false)
                     {
-                        buttonLoadSaveName.Text = "Charger \"Nom_12345\"";
                     }
                     else
                     {
@@ -310,7 +311,6 @@ namespace TranslationFixer
                 case "Español":
                     if (fileLoaded == false)
                     {
-                        buttonLoadSaveName.Text = "Cargar \"Name_12345\"";
                     }
                     else
                     {
@@ -322,7 +322,6 @@ namespace TranslationFixer
                 default:
                     if (fileLoaded == false)
                     {
-                        buttonLoadSaveName.Text = "Load \"Name_12345\"";
                     }
                     else
                     {
@@ -331,11 +330,22 @@ namespace TranslationFixer
                     checkBoxBackup.Text = "Backup in the save's folder";
                     break;
             }
+
+            // Bouton "Corriger"
+            if ((comboBox1.Text != "") && (comboBoxSave.Text != ""))
+            {
+                buttonReplace.Enabled = true;
+                buttonReplace.Font = new Font("Calibri Light", 15F);
+                buttonReplace.BackColor = SystemColors.Highlight;
+                buttonReplace.Text = Translate_Traduire();
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("http://community.playstarbound.com/threads/fan-translation-projects-pt-fr-sp-cz-de.114398/");
         }
+
+        
     }
 }

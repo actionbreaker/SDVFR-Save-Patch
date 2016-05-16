@@ -30,13 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.buttonReplace = new System.Windows.Forms.Button();
-            this.buttonLoadSaveName = new System.Windows.Forms.Button();
             this.buttonMAJ = new System.Windows.Forms.Button();
             this.checkBoxBackup = new System.Windows.Forms.CheckBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.labelCompWith = new System.Windows.Forms.Label();
+            this.comboBoxSave = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonReplace
@@ -53,21 +54,6 @@
             this.buttonReplace.Text = "Corriger";
             this.buttonReplace.UseVisualStyleBackColor = false;
             this.buttonReplace.Click += new System.EventHandler(this.buttonReplace_Click);
-            // 
-            // buttonLoadSaveName
-            // 
-            this.buttonLoadSaveName.BackColor = System.Drawing.SystemColors.Highlight;
-            this.buttonLoadSaveName.FlatAppearance.BorderSize = 0;
-            this.buttonLoadSaveName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonLoadSaveName.Font = new System.Drawing.Font("Calibri Light", 15F);
-            this.buttonLoadSaveName.ForeColor = System.Drawing.Color.White;
-            this.buttonLoadSaveName.Location = new System.Drawing.Point(14, 82);
-            this.buttonLoadSaveName.Name = "buttonLoadSaveName";
-            this.buttonLoadSaveName.Size = new System.Drawing.Size(256, 53);
-            this.buttonLoadSaveName.TabIndex = 5;
-            this.buttonLoadSaveName.Text = "Charger \"Nom_12345\"";
-            this.buttonLoadSaveName.UseVisualStyleBackColor = false;
-            this.buttonLoadSaveName.Click += new System.EventHandler(this.buttonLoadSaveName_Click);
             // 
             // buttonMAJ
             // 
@@ -109,7 +95,7 @@
             this.comboBox1.Items.AddRange(new object[] {
             "Français",
             "Español"});
-            this.comboBox1.Location = new System.Drawing.Point(63, 41);
+            this.comboBox1.Location = new System.Drawing.Point(94, 41);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(88, 23);
             this.comboBox1.TabIndex = 17;
@@ -143,10 +129,30 @@
             // 
             this.labelCompWith.AutoSize = true;
             this.labelCompWith.Font = new System.Drawing.Font("Calibri", 9F);
-            this.labelCompWith.Location = new System.Drawing.Point(160, 43);
+            this.labelCompWith.Location = new System.Drawing.Point(191, 43);
             this.labelCompWith.Name = "labelCompWith";
             this.labelCompWith.Size = new System.Drawing.Size(0, 18);
             this.labelCompWith.TabIndex = 20;
+            // 
+            // comboBoxSave
+            // 
+            this.comboBoxSave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSave.FormattingEnabled = true;
+            this.comboBoxSave.Location = new System.Drawing.Point(82, 104);
+            this.comboBoxSave.Name = "comboBoxSave";
+            this.comboBoxSave.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxSave.TabIndex = 21;
+            this.comboBoxSave.SelectedIndexChanged += new System.EventHandler(this.comboBoxSave_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 11F);
+            this.label2.Location = new System.Drawing.Point(75, 76);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(134, 23);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Select your save";
             // 
             // Form1
             // 
@@ -154,13 +160,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(285, 300);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBoxSave);
             this.Controls.Add(this.labelCompWith);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonMAJ);
             this.Controls.Add(this.checkBoxBackup);
-            this.Controls.Add(this.buttonLoadSaveName);
             this.Controls.Add(this.buttonReplace);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
@@ -173,13 +180,14 @@
 
         #endregion
         private System.Windows.Forms.Button buttonReplace;
-        private System.Windows.Forms.Button buttonLoadSaveName;
         private System.Windows.Forms.Button buttonMAJ;
         private System.Windows.Forms.CheckBox checkBoxBackup;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label labelCompWith;
+        private System.Windows.Forms.ComboBox comboBoxSave;
+        private System.Windows.Forms.Label label2;
     }
 }
 

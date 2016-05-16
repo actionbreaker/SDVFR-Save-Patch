@@ -16,9 +16,10 @@ namespace TranslationFixer
             mData = new Data();
         }
 
-        public void Remplace3(XmlNodeList node, string alaqueuleuleu)     // Traduction en anglais
+        public void Remplace3(XmlNodeList node, string alaqueuleuleu, Button toast)     // Traduction en anglais
         {
             string[,] erdnusse;
+            toast.Text = "0%";
 
             switch (alaqueuleuleu)
             {
@@ -28,15 +29,6 @@ namespace TranslationFixer
                 case "Español":
                     erdnusse = mData.tablesp;
                     break;
-                /*case "Český":
-                    //erdnusse = mData.tablecz;
-                    break;
-                case "Deutsch":
-                    //erdnusse = mData.tablede;
-                    break;
-                case "Português":
-                    //erdnusse = mData.tablept;
-                    break;*/
                 default:
                     erdnusse = mData.tablefr;
                     break;
@@ -52,6 +44,11 @@ namespace TranslationFixer
                         if (currNode.InnerText == erdnusse[i, 0])
                         {
                             currNode.InnerText = erdnusse[i, 1];
+                            // Esthétique
+                            if ((i / 10) <= 99)
+                                toast.Text = (i / 10).ToString() + "%";
+                            else
+                                toast.Text = "99%";
                         }
                         currNode = currNode.NextSibling;            // On passe au noeud d'après
                     }

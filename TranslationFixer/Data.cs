@@ -952,7 +952,7 @@
             {"Tea Set", "Service à Thé"},
             {"Pickles", "Cornichons"},
             {"Jelly", "Gelée"},
-            {"Beer", "Bière       "},
+            {"Beer", "Bière"},
             {"Rare Seed", "Graine Rare"},
             {"Wine", "Vin"},
             {"Energy Tonic", "Boisson Énergisante"},
