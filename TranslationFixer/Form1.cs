@@ -151,14 +151,14 @@ namespace TranslationFixer
             if (hasUpdate)
             {
                 WebClient Client = new WebClient();
-                Client.DownloadFile("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/download/" + last + "/SDVSavePatch_" + last + ".exe", "SDVFRSavePatch_" + last + ".exe");
-                Process.Start("SDVFRSavePatch_" + last + ".exe");
+                Client.DownloadFile("https://github.com/actionbreaker/SDVSavePatch/releases/download/" + last + "/SDVSavePatch_" + last + ".exe", "SDVSavePatch_" + last + ".exe");
+                Process.Start("SDVSavePatch_" + last + ".exe");
                 Dispose();
             }
             // Si pas de MAJ, changelog
             else
             {
-                Process.Start("https://github.com/actionbreaker/SDVFR-Save-Patch/releases");
+                Process.Start("https://github.com/actionbreaker/SDVSavePatch/releases");
             }
         }
 
