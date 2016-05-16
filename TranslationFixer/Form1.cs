@@ -21,7 +21,7 @@ namespace TranslationFixer
         private string pathfileName;
         string pathDirectoryName;
         string name;
-        string currentVersion = "v0.13.3";
+        string currentVersion = "v0.13.3.1";
 
         bool done;
         bool fileLoaded;
@@ -151,7 +151,7 @@ namespace TranslationFixer
             if (hasUpdate)
             {
                 WebClient Client = new WebClient();
-                Client.DownloadFile("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/download/" + last + "/SDVFRSavePatch_" + last + ".exe", "SDVFRSavePatch_" + last + ".exe");
+                Client.DownloadFile("https://github.com/actionbreaker/SDVFR-Save-Patch/releases/download/" + last + "/SDVSavePatch_" + last + ".exe", "SDVFRSavePatch_" + last + ".exe");
                 Process.Start("SDVFRSavePatch_" + last + ".exe");
                 Dispose();
             }
