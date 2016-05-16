@@ -24,7 +24,6 @@ namespace TranslationFixer
         string name;
         string currentVersion = "v0.14";
 
-        bool done;
         bool fileLoaded;
         bool hasUpdate = false;
         string last;
@@ -43,7 +42,6 @@ namespace TranslationFixer
                 i++;
             }
 
-            done = false;
             fileLoaded = false;
             mOperation = new Fonctions();
 
@@ -136,7 +134,6 @@ namespace TranslationFixer
                 buttonReplace.Enabled = false;
                 buttonReplace.BackColor = Color.White;
                 buttonReplace.Text = Translate_Terminé();
-                done = true;
             }
             catch
             {
