@@ -26,7 +26,7 @@ namespace TranslationFixer
         private string pathfileName;
         string pathDirectoryName;
         string name;
-        string currentVersion = "v0.15-RC2";
+        string currentVersion = "v0.15-RC3";
 
         bool fileLoaded;
         bool hasUpdate = false;
@@ -157,10 +157,7 @@ namespace TranslationFixer
             // Télécharge et exécute la dernière version
             if (hasUpdate)
             {
-                WebClient Client = new WebClient();
-                Client.DownloadFile("https://github.com/actionbreaker/SDVSavePatch/releases/download/" + last + "/SDVSavePatch_" + last + ".exe", "SDVSavePatch_" + last + ".exe");
-                Process.Start("SDVSavePatch_" + last + ".exe");
-                Dispose();
+                Process.Start("https://github.com/actionbreaker/SDVSavePatch/releases");
             }
             // Si pas de MAJ, changelog
             else
