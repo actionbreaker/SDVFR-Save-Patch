@@ -26,7 +26,7 @@ namespace TranslationFixer
         private string pathfileName;
         string pathDirectoryName;
         string name;
-        string currentVersion = "v0.15";
+        string currentVersion = "v0.15-RC2";
 
         bool fileLoaded;
         bool hasUpdate = false;
@@ -59,10 +59,10 @@ namespace TranslationFixer
 
             // Corriger
             buttonReplace.Enabled = false;
-            buttonReplace.Text = "Save Patch " + currentVersion;
+            buttonReplace.Text = "Traduire";
 
             // Recherche de MAJ
-            buttonMAJ.Text = "Recherche...";
+            buttonMAJ.Text = " ";
             CheckUpdate();
         }
 
@@ -197,7 +197,7 @@ namespace TranslationFixer
                 hasUpdate = true;
                 buttonMAJ.Enabled = true;
                 buttonMAJ.BackColor = Color.DarkOrange;
-                buttonMAJ.Text = Translate_Téléchargerla() + last;
+                buttonMAJ.Text = "Update available";
             }
             // Pas de MAJ
             else

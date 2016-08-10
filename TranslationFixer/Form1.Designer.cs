@@ -30,7 +30,7 @@
         {
         	System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
         	this.buttonReplace = new MaterialSkin.Controls.MaterialRaisedButton();
-        	this.buttonMAJ = new System.Windows.Forms.Button();
+        	this.buttonMAJ = new MaterialSkin.Controls.MaterialFlatButton();
         	this.checkBoxBackup = new MaterialSkin.Controls.MaterialCheckBox();
         	this.comboBox1 = new System.Windows.Forms.ComboBox();
         	this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -55,18 +55,17 @@
         	// buttonMAJ
         	// 
         	this.buttonMAJ.AutoSize = true;
-        	this.buttonMAJ.BackColor = System.Drawing.Color.Gray;
-        	this.buttonMAJ.FlatAppearance.BorderSize = 0;
-        	this.buttonMAJ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-        	this.buttonMAJ.Font = new System.Drawing.Font("Segoe UI", 11F);
-        	this.buttonMAJ.ForeColor = System.Drawing.Color.White;
-        	this.buttonMAJ.Location = new System.Drawing.Point(25, 286);
-        	this.buttonMAJ.Margin = new System.Windows.Forms.Padding(2);
+        	this.buttonMAJ.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+        	this.buttonMAJ.Depth = 0;
+        	this.buttonMAJ.Location = new System.Drawing.Point(41, 282);
+        	this.buttonMAJ.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+        	this.buttonMAJ.MouseState = MaterialSkin.MouseState.HOVER;
         	this.buttonMAJ.Name = "buttonMAJ";
-        	this.buttonMAJ.Size = new System.Drawing.Size(164, 30);
+        	this.buttonMAJ.Primary = false;
+        	this.buttonMAJ.Size = new System.Drawing.Size(93, 36);
         	this.buttonMAJ.TabIndex = 16;
         	this.buttonMAJ.Text = "Changelog";
-        	this.buttonMAJ.UseVisualStyleBackColor = false;
+        	this.buttonMAJ.UseVisualStyleBackColor = true;
         	this.buttonMAJ.Click += new System.EventHandler(this.buttonMAJ_Click);
         	// 
         	// checkBoxBackup
@@ -93,7 +92,7 @@
         	// comboBox1
         	// 
         	this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        	this.comboBox1.Font = new System.Drawing.Font("Calibri", 7.8F);
+        	this.comboBox1.Font = new System.Drawing.Font("Calibri", 9F);
         	this.comboBox1.FormattingEnabled = true;
         	this.comboBox1.Items.AddRange(new object[] {
 			"Français",
@@ -101,7 +100,7 @@
         	this.comboBox1.Location = new System.Drawing.Point(76, 94);
         	this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
         	this.comboBox1.Name = "comboBox1";
-        	this.comboBox1.Size = new System.Drawing.Size(67, 21);
+        	this.comboBox1.Size = new System.Drawing.Size(67, 22);
         	this.comboBox1.TabIndex = 17;
         	this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
         	// 
@@ -123,11 +122,12 @@
         	// comboBoxSave
         	// 
         	this.comboBoxSave.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        	this.comboBoxSave.Font = new System.Drawing.Font("Calibri", 9F);
         	this.comboBoxSave.FormattingEnabled = true;
         	this.comboBoxSave.Location = new System.Drawing.Point(65, 154);
         	this.comboBoxSave.Margin = new System.Windows.Forms.Padding(2);
         	this.comboBoxSave.Name = "comboBoxSave";
-        	this.comboBoxSave.Size = new System.Drawing.Size(92, 21);
+        	this.comboBoxSave.Size = new System.Drawing.Size(92, 22);
         	this.comboBoxSave.TabIndex = 21;
         	this.comboBoxSave.SelectedIndexChanged += new System.EventHandler(this.comboBoxSave_SelectedIndexChanged);
         	// 
@@ -176,11 +176,10 @@
         	this.Text = "Save Patch v0.15";
         	this.ResumeLayout(false);
         	this.PerformLayout();
-
         }
         #endregion
         private MaterialSkin.Controls.MaterialRaisedButton buttonReplace;
-        private System.Windows.Forms.Button buttonMAJ;
+        private MaterialSkin.Controls.MaterialFlatButton buttonMAJ;
         private MaterialSkin.Controls.MaterialCheckBox checkBoxBackup;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.LinkLabel linkLabel1;
