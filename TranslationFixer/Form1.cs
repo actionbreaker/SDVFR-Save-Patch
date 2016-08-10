@@ -26,7 +26,7 @@ namespace TranslationFixer
         private string pathfileName;
         string pathDirectoryName;
         string name;
-        string currentVersion = "v0.14";
+        string currentVersion = "v0.15";
 
         bool fileLoaded;
         bool hasUpdate = false;
@@ -36,10 +36,11 @@ namespace TranslationFixer
         public Form1()
         {
             InitializeComponent();
+            this.MaximizeBox=false;
             var materialSkinManager = MaterialSkinManager.Instance;
       materialSkinManager.AddFormToManage(this);
-      materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-      materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+      materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
+      materialSkinManager.ColorScheme = new ColorScheme(Primary.Green800, Primary.Green900, Primary.BlueGrey500, Accent.Orange200, TextShade.WHITE);
 
             directories = Directory.GetDirectories(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\StardewValley\\Saves");
             int i = 0;
@@ -58,7 +59,6 @@ namespace TranslationFixer
 
             // Corriger
             buttonReplace.Enabled = false;
-            buttonReplace.BackColor = Color.White;
             buttonReplace.Text = "Save Patch " + currentVersion;
 
             // Recherche de MAJ
@@ -310,8 +310,6 @@ namespace TranslationFixer
                     {
                         buttonReplace.Text = Translate_Traduire();
                     }
-                    checkBoxBackup.Text = "Backup dans le dossier de la save";
-                    labelCompWith.Text = "pour v0.32";
                     break;
                 case "Español":
                     if (fileLoaded == false)
@@ -321,8 +319,6 @@ namespace TranslationFixer
                     {
                         buttonReplace.Text = Translate_Traduire();
                     }
-                    checkBoxBackup.Text = "Copia de seguridad";
-                    labelCompWith.Text = "para v1.4.3";
                     break;
                 default:
                     if (fileLoaded == false)
@@ -332,7 +328,6 @@ namespace TranslationFixer
                     {
                         buttonReplace.Text = Translate_Traduire();
                     }
-                    checkBoxBackup.Text = "Backup in the save's folder";
                     break;
             }
 
